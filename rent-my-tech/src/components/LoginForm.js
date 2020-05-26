@@ -16,6 +16,13 @@ const LoginForm = (props) => {
     return (
         <form onSubmit={onSubmit}>
             <h1>Login</h1>
+            <label>I am a 
+                <select onChange={onLoginInputChange} value={values.userType} name="userType">
+                    <option value=""></option>
+                    <option value="renter">Renter</option>
+                    <option value="owner">Owner</option>
+                </select>
+            </label>
             <label>Username: 
                 <input type="text" value={values.username} onChange={onLoginInputChange} name="username"></input>
             </label>
@@ -24,6 +31,9 @@ const LoginForm = (props) => {
                 <input type="password" value={values.password} onChange={onLoginInputChange} name="password"></input>
             </label>
             <div>{errors.password}</div>
+            <label>Full Name:
+                <input type="text" value={values.fullName} onChange={onLoginInputChange} name="fullName"></input>
+            </label>
             <button disabled={disabled} className="submit">Sign In</button>
         </form>
     );
