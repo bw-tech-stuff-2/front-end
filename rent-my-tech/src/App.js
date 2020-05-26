@@ -41,7 +41,7 @@ function App() {
   const [userValues, setUserValues] = useState(initialUserValues);
   const [loginValues, setLoginValues] = useState(initialLoginValues);
   const [signupFormErrors, setSignupFormErrors] = useState(initialSignUpFormErrors);
-  const [loginFormErrors, setLoginFormErrors] = useState(initial)
+  const [loginFormErrors, setLoginFormErrors] = useState(initialLoginFormErrors)
   const [disabled, setDisabled] = useState(disabled);
 
   const onSignupInputChange = evt => {
@@ -55,7 +55,7 @@ function App() {
       .catch(err => {
         setSignupFormErrors({...signupFormErrors, [name]: err.errors[0]})
       })
-    setSignupFormErrors({...signupFormErrors, [name]:: value});
+    setSignupFormErrors({...signupFormErrors, [name]: value});
   }
 
   const onLoginInputChange = evt => {
