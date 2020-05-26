@@ -32,6 +32,13 @@ const LoginForm = (props) => {
                 <input type="text" value={values.email} onChange={onInputChange} name="email"></input>
             </label>
             <div>{errors.email}</div>
+            <label>I am a 
+                <select onChange={onInputChange} value={values.userType} name="userType">
+                    <option value=""></option>
+                    <option value="renter">Renter</option>
+                    <option value="owner">Owner</option>
+                </select>
+            </label>
             <button disabled={disabled} className="submit">Register</button>
         </form>
     );
