@@ -14,10 +14,10 @@ const SignupForm = (props) => {
     // Not Required: Email
 
     return (
-        <form onSubmit={onSubmit}>
+        <form className="registerForm" onSubmit={onSubmit}>
             <h1>Sign Up</h1>
             <label>Full Name: 
-                <input type="text" value={values.fullName} onChange={onSignupInputChange} name="fullName"></input>
+                <input type="text" value={values.fullName} name="fullName" onChange={onSignupInputChange}></input>
             </label>
             <div>{errors.fullName}</div>
             <label>Username: 

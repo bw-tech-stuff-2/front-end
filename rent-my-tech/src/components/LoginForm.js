@@ -31,6 +31,9 @@ const LoginForm = (props) => {
                 <input type="password" value={values.password} onChange={onLoginInputChange} name="password"></input>
             </label>
             <div>{errors.password}</div>
+            <label>Full Name:
+                <input type="text" value={values.fullName} onChange={onLoginInputChange} name="fullName"></input>
+            </label>
             <button disabled={disabled} className="submit">Sign In</button>
         </form>
     );
