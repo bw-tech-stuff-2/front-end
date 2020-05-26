@@ -1,9 +1,9 @@
 import {combineReducers} from 'redux'
-import {exampleReducer} from './exampleReducer'
+import {getTokenRealQuick} from './getTokenRealQuick'
 // import reducer2 from './reducer2'
 
 export default combineReducers({
-    exampleReducer,
+    getTokenRealQuick,
     // reducer2,
     // reducer3,
     // etc...
