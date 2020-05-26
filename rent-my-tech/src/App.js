@@ -6,11 +6,11 @@ import * as yup from "yup";
 import LoginFormSchema from "./validation/LoginFormSchema";
 import SignupFormSchema from "./validation/SignupFormSchema";
 import axios from "axios";
-import {Route, NavLink} from "react-router-dom";
+import {Route, NavLink, useHistory} from "react-router-dom";
 
 function App() {
-  const initialRentersList = [];
-  const initialOwnersList = [];
+  // const initialRentersList = [];
+  // const initialOwnersList = [];
   const initialUserValues = {
     fullName: "",
     username: "",
@@ -18,10 +18,11 @@ function App() {
     email: "",
     userType: "",
   }
-  const initialLoginValues = {
-    username: "",
-    password: "",
-  }
+  // const initialLoginValues = {
+  //   username: "",
+  //   password: "",
+  //   userType: "",
+  // }
   const initialSignUpFormErrors = {
     fullName: "",
     username: "",
@@ -36,45 +37,48 @@ function App() {
   }
   const initialDisabled = false;
   
-  const [renters, setRenters] = useState(initialRentersList);
-  const [owners, setOwners] = useState(initialOwnersList);
+  // const [renters, setRenters] = useState(initialRentersList);
+  // const [owners, setOwners] = useState(initialOwnersList);
   const [userValues, setUserValues] = useState(initialUserValues);
-  const [loginValues, setLoginValues] = useState(initialLoginValues);
+  // const [loginValues, setLoginValues] = useState(initialLoginValues);
   const [signupFormErrors, setSignupFormErrors] = useState(initialSignUpFormErrors);
   const [loginFormErrors, setLoginFormErrors] = useState(initialLoginFormErrors)
   const [disabled, setDisabled] = useState(initialDisabled);
+  const [token, setToken] = useState("");
+  const history = useHistory();
+  const {push} = history;
 
   const onSignupInputChange = evt => {
     const {name, value} = evt.target;
-    yup
-      .reach(SignupFormSchema, name)
-      .validate(value)
-      .then(valid => {
-        setSignupFormErrors({...signupFormErrors, [name]: ""})
-      })
-      .catch(err => {
-        setSignupFormErrors({...signupFormErrors, [name]: err.errors[0]})
-      })
-    setSignupFormErrors({...signupFormErrors, [name]: value});
+    // yup
+    //   .reach(SignupFormSchema, name)
+    //   .validate(value)
+    //   .then(valid => {
+    //     setSignupFormErrors({...signupFormErrors, [name]: ""})
+    //   })
+    //   .catch(err => {
+    //     setSignupFormErrors({...signupFormErrors, [name]: err.errors[0]})
+    //   })
+    setUserValues({...userValues, [name]: value});
   }
 
   const onLoginInputChange = evt => {
     const {name, value} = evt.target;
-    yup
-      .reach(LoginFormSchema, name)
-      .validate(value)
-      .then(valid => {
-        setLoginFormErrors({...loginFormErrors, [name]: ""})
-      })
-      .catch(err => {
-        setLoginFormErrors({...loginFormErrors, [name]: err.errors[0]})
-      })
-    setLoginFormErrors({...loginFormErrors, [name]: value});
+    // yup
+    //   .reach(LoginFormSchema, name)
+    //   .validate(value)
+    //   .then(valid => {
+    //     setLoginFormErrors({...loginFormErrors, [name]: ""})
+    //   })
+    //   .catch(err => {
+    //     setLoginFormErrors({...loginFormErrors, [name]: err.errors[0]})
+    //   })
+    setUserValues({...userValues, [name]: value});
   }
 
   const postNewUser = newUser => {
     const postUser = {
-      fullName: newUser.fullName,
+      ownerName: newUser.fullName,
       username: newUser.username,
       password: newUser.password,
       email: newUser.email,
@@ -82,31 +86,35 @@ function App() {
     if (newUser.userType === "renter") {
       axios.post("https://usemytechstuff2.herokuapp.com/api/renters/auth/register", postUser)
         .then(res => {
-          setRenters([...renters, res.data])
+          console.log(res)
+          setToken(res.data.token)
+          console.log(token)
         })
         .finally(setUserValues(initialUserValues))
     } else if (newUser.userType === "owner") {
-      axios.post("https://usemytechstuff2.herokuapp.com/api/owners/auth/register", postUser)
+      axios.post("https://usemytechstuff2.herokuapp.com/api/owners/auth/login", postUser)
         .then(res => {
-          setOwners([...owners, res.data])
+          console.log(res)
+          setToken(res.data.token)
+          console.log(token)
         })
         .finally(setUserValues(initialUserValues))
     }
   }
 
-  useEffect(() => {
-    SignupFormSchema.isValid(userValues)
-      .then(valid => {
-        setDisabled(!valid)
-      })
-    }, [userValues])
+  // useEffect(() => {
+  //   SignupFormSchema.isValid(userValues)
+  //     .then(valid => {
+  //       setDisabled(!valid)
+  //     })
+  //   }, [userValues])
 
-  useEffect(() => {
-    LoginFormSchema.isValid(loginValues)
-      .then(valid => {
-        setDisabled(!valid)
-      })
-  }, [loginValues])
+  // useEffect(() => {
+  //   LoginFormSchema.isValid(loginValues)
+  //     .then(valid => {
+  //       setDisabled(!valid)
+  //     })
+  // }, [loginValues])
 
   const onSubmitSignup = evt => {
     evt.preventDefault()
@@ -119,6 +127,22 @@ function App() {
       userType: userValues.userType.trim(),
     }
     postNewUser(newUser);
+  }
+
+  const onSubmitLogin = evt => {
+    evt.preventDefault()
+    const newUser = {
+      username: userValues.username.trim(),
+      password: userValues.password.trim(),
+      fullName: userValues.fullName.trim(),
+      userType: userValues.userType.trim(),
+    }
+
+    axios.post("endpoint", newUser)
+      .then(res => {
+        push("/");
+        return res.data.token;
+      })
   }
 
   return (
@@ -136,7 +160,15 @@ function App() {
           <NavLink className="signupLink" to="/register">Register</NavLink>
           <NavLink className="loginLink" to="/login">Login</NavLink>
         </nav>
-        <SignupForm values={userValues} onInputChange={onSignupInputChange} onSubmit={onSubmitSignup} disabled={disabled} errors={signupFormErrors}></SignupForm>
+        <SignupForm values={userValues} onSignupInputChange={onSignupInputChange} onSubmit={onSubmitSignup} disabled={disabled} errors={signupFormErrors}></SignupForm>
+      </Route>
+      <Route path="/login">
+        <nav>
+          <NavLink className="homeLink" to="/">Home</NavLink>
+          <NavLink className="signupLink" to="/register">Register</NavLink>
+          <NavLink className="loginLink" to="/login">Login</NavLink>
+        </nav>
+        <LoginForm values={userValues} onLoginInputChange={onLoginInputChange} onSubmit={onSubmitLogin} disabled={disabled} errors={loginFormErrors}></LoginForm>
       </Route>
     </div>
   );
