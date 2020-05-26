@@ -21,6 +21,7 @@ function App() {
   const initialLoginValues = {
     username: "",
     password: "",
+    userType: "",
   }
   const initialSignUpFormErrors = {
     fullName: "",
@@ -121,6 +122,32 @@ function App() {
     postNewUser(newUser);
   }
 
+  const onSubmitLogin = evt => {
+    evt.preventDefault()
+    const type = "";
+    const logged = false;
+    const newUser = {
+      username: userValues.username.trim(),
+      password: userValues.password.trim(),
+      userType: userValues.userType,
+    }
+
+    if (newUser.userType === "renter") {
+      type="renters";
+    } else if (newUser.userType === "owner") {
+      type = "owners"
+    }
+    axios.get(`https://usemytechstuff2.herokuapp.com/api/${type}/`)
+      .then(res => {
+        const resArr = Array.from(res.data);
+        for (let i = 0; i < resArr.length; i++) {
+          if (resArr[i].username === newUser.username && resArr[i].password === newUser.password) {
+            logged = true;
+          }
+        }
+      })
+  }
+
   return (
     <div>
       <Route exact path = "/">
@@ -137,6 +164,14 @@ function App() {
           <NavLink className="loginLink" to="/login">Login</NavLink>
         </nav>
         <SignupForm values={userValues} onInputChange={onSignupInputChange} onSubmit={onSubmitSignup} disabled={disabled} errors={signupFormErrors}></SignupForm>
+      </Route>
+      <Route path="/login">
+        <nav>
+          <NavLink className="homeLink" to="/">Home</NavLink>
+          <NavLink className="signupLink" to="/register">Register</NavLink>
+          <NavLink className="loginLink" to="/login">Login</NavLink>
+        </nav>
+        <LoginForm values={userValues} onInputChange={onLoginInputChange} onSubmit={onSubmitLogin} disabled={disabled} errors={loginFormErrors}></LoginForm>
       </Route>
     </div>
   );
