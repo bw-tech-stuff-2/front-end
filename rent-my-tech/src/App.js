@@ -42,7 +42,7 @@ function App() {
   const [loginValues, setLoginValues] = useState(initialLoginValues);
   const [signupFormErrors, setSignupFormErrors] = useState(initialSignUpFormErrors);
   const [loginFormErrors, setLoginFormErrors] = useState(initialLoginFormErrors)
-  const [disabled, setDisabled] = useState(disabled);
+  const [disabled, setDisabled] = useState(initialDisabled);
 
   const onSignupInputChange = evt => {
     const {name, value} = evt.target;
