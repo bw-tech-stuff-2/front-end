@@ -1,10 +1,10 @@
-import {combineReducers} from 'redux'
-import {getTokenRealQuick} from './getTokenRealQuick'
-// import reducer2 from './reducer2'
+import { combineReducers } from "redux";
+import { getRequestItems as request } from "./getRequestItems";
+import { getTechItems as tech } from "./getTechItems";
 
 export default combineReducers({
-    getTokenRealQuick,
-    // reducer2,
-    // reducer3,
-    // etc...
-})
+  request,
+  tech,
+  // reducer3,
+  // etc...
+});

@@ -1,16 +1,130 @@
-import {axiosWithAuth} from '../../utils/axiosWithAuth'
+import { axiosWithAuth } from "../../utils/axiosWithAuth";
 
-export const GET_TOKEN_START = "GET_TOKEN_START"
-export const GET_TOKEN_SUCCESS = "GET_TOKEN_SUCCESS"
-export const GET_TOKEN_FAIL = "GET_TOKEN_FAIL"
+//Calebs Actions
+export const GET_REQUEST_ITEMS_START = "GET_REQUEST_ITEMS_START";
+export const GET_REQUEST_ITEMS_SUCCESS = "GET_REQUEST_ITEMS_SUCCESS";
+export const GET_REQUEST_ITEMS_FAIL = "GET_REQUEST_ITEMS_FAIL";
 
-export const getTokenRealQuick = user => dispatch => {
-    dispatch({type: GET_TOKEN_START, payload: {error: "", isFetching: true}})
-    axiosWithAuth.post("/api/renters/auth/login", user)
-        .then(res => {
-            dispatch({type: GET_TOKEN_SUCCESS, payload: {token: res.data.token, error: "", isFetching: false}})
-        })
-        .catch(() => {
-            dispatch({type: GET_TOKEN_FAIL, payload: {error: "SOMETHING WENT HORRIBLY WRONG...", isFetching: false}})
-        })
-}
+export const GET_REQUEST_CURRENT_ITEM_START = "GET_REQUEST_CURRENT_ITEM_START";
+export const GET_REQUEST_CURRENT_ITEM_SUCCESS =
+  "GET_REQUEST_CURRENT_ITEM_SUCCESS";
+export const GET_REQUEST_CURRENT_ITEM_FAIL = "GET_REQUEST_CURRENT_ITEM_FAIL";
+
+//Codys Actions
+export const GET_TECH_ITEMS_START = "GET_TECH_ITEMS_START";
+export const GET_TECH_ITEMS_SUCCESS = "GET_TECH_ITEMS_SUCCESS";
+export const GET_TECH_ITEMS_FAIL = "GET_TECH_ITEMS_FAIL";
+
+export const GET_TECH_CURRENT_ITEM_START = "GET_TECH_CURRENT_ITEM_START";
+export const GET_TECH_CURRENT_ITEM_SUCCESS = "GET_TECH_CURRENT_ITEM_SUCCESS";
+export const GET_TECH_CURRENT_ITEM_FAIL = "GET_TECH_CURRENT_ITEM_FAIL";
+
+//Calebs Functions
+
+export const getRequestItems = () => {
+  return (dispatch) => {
+    dispatch({
+      type: GET_REQUEST_ITEMS_START,
+      payload: { error: "", isFetching: true },
+    });
+    axiosWithAuth()
+      .get("/api/request")
+      .then((res) => {
+        dispatch({
+          type: GET_REQUEST_ITEMS_SUCCESS,
+          payload: { error: "", isFetching: false, requestList: res.data },
+        });
+      })
+      .catch(() => {
+        dispatch({
+          type: GET_REQUEST_ITEMS_FAIL,
+          payload: {
+            error: "SOMETHING WENT HORRIBLY WORNG",
+            isFetching: false,
+          },
+        });
+      });
+  };
+};
+
+export const getRequestCurrentItem = (id) => {
+  return (dispatch) => {
+    dispatch({
+      type: GET_REQUEST_CURRENT_ITEM_START,
+      payload: { error: "", isFetching: true },
+    });
+    axiosWithAuth()
+      .get(`api/request/${id}`)
+      .then((res) => {
+        dispatch({
+          type: GET_REQUEST_CURRENT_ITEM_SUCCESS,
+          payload: {
+            error: "",
+            isFetching: false,
+            currentRequestItem: res.data,
+          },
+        });
+      })
+      .catch(() => {
+        dispatch({
+          type: GET_REQUEST_CURRENT_ITEM_FAIL,
+          payload: { error: "TRY COMING FROM RENTERPAGE", isFetching: false },
+        });
+      });
+  };
+};
+
+//Codys Functiions
+
+export const getTechItems = () => {
+  return (dispatch) => {
+    dispatch({
+      type: GET_TECH_ITEMS_START,
+      payload: { error: "", isFetching: true },
+    });
+    axiosWithAuth()
+      .get("/api/tech")
+      .then((res) => {
+        dispatch({
+          type: GET_TECH_ITEMS_SUCCESS,
+          payload: { error: "", isFetching: false, techList: res.data },
+        });
+      })
+      .catch(() => {
+        dispatch({
+          type: GET_TECH_ITEMS_FAIL,
+          payload: {
+            error: "SOMETHING WENT HORRIBLY WORNG",
+            isFetching: false,
+          },
+        });
+      });
+  };
+};
+
+export const getCurrentTechItems = (id) => {
+  return (dispatch) => {
+    dispatch({
+      type: GET_TECH_CURRENT_ITEM_START,
+      payload: { error: "", isFetching: true },
+    });
+    axiosWithAuth()
+      .get(`api/tech/${id}`)
+      .then((res) => {
+        dispatch({
+          type: GET_TECH_CURRENT_ITEM_SUCCESS,
+          payload: {
+            error: "",
+            isFetching: false,
+            currentTechItem: res.data,
+          },
+        });
+      })
+      .catch(() => {
+        dispatch({
+          type: GET_TECH_CURRENT_ITEM_FAIL,
+          payload: { error: "TRY COMING FROM RENTERPAGE", isFetching: false },
+        });
+      });
+  };
+};
