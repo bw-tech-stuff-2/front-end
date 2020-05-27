@@ -3,9 +3,10 @@ import './App.css';
 import SignupForm from "./components/SignupForm";
 import LoginForm from "./components/LoginForm";
 import {Route, NavLink} from "react-router-dom";
+import RenterPage from './components/RenterPage'
+import TechPage from './components/TechPage'
 
 function App() {
-  const [token, setToken] = useState("");
   return (
     <div>
       <Route exact path = "/">
@@ -29,8 +30,10 @@ function App() {
           <NavLink className="signupLink" to="/register">Register</NavLink>
           <NavLink className="loginLink" to="/login">Login</NavLink>
         </nav>
-        <LoginForm token={token} setToken={setToken}/>
+        <LoginForm />
       </Route>
+      <Route path="/renterPage" component={RenterPage} />
+      <Route path="/techPage" component={TechPage} />
     </div>
   );
 }

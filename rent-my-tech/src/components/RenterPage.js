@@ -1,34 +1,28 @@
 // Basic React
-import React from 'react'
+import React, {useEffect} from 'react'
 
 // Redux Stuff
 import {connect} from 'react-redux'
 
+// Utils
+// import {axiosWithAuth} from '../utils/axiosWithAuth'
+
 // Actions
-import {getTokenRealQuick} from '../store/actions/'
+import {getRequestItems} from '../store/actions/'
 
-const hardCodedUser = {
-    username: "flyguy",
-    password: "backtothefuture",
-    renterName: "Marty McFly"
+const RenterPage = props => {
+    useEffect(() => {
+        props.getRequestItems()
+        console.log(props.requestList)
+    }, [])
+
+    return(
+        <>
+            REQ ITEMS PAGE!
+        </>
+    )
 }
 
-class RenterPage extends React.Component{
-
-    // Lifecycle Method
-    componentDidMount() {
-        this.props.getTokenRealQuick(hardCodedUser) // set the token into the redux store
-    }
-
-    render(){
-        return(
-            <>
-            </>
-        )
-    }
-}
-
-// returns the token -> set into our state using redux 
 
 // using the token send a get request to api/request
 // set the list of items and their info into state using redux
@@ -40,11 +34,11 @@ class RenterPage extends React.Component{
 
 const mapStateToProps = state => {
     return {
-        token: state.token,
         isFetching: state.isFetching,
-        error: state.error
+        error: state.error,
+        requestList: state.requestList
     }
 }
 
-export default connect(mapStateToProps, {getTokenRealQuick})(RenterPage)
+export default connect(mapStateToProps, {getRequestItems})(RenterPage)
 
