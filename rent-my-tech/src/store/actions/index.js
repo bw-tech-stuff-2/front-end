@@ -1,4 +1,4 @@
-import {axiosWithAuth} from '../../utils'
+import {axiosWithAuth} from '../../utils/axiosWithAuth'
 
 export const GET_TOKEN_START = "GET_TOKEN_START"
 export const GET_TOKEN_SUCCESS = "GET_TOKEN_SUCCESS"
