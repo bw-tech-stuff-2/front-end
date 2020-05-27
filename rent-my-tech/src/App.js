@@ -44,8 +44,8 @@ function App() {
             Login
           </Button>
         </AppBar>
-    <StyledFormDiv>
-        <SignupForm />
+        <StyledFormDiv>
+          <SignupForm />
         </StyledFormDiv>
       </Route>
       <Route path="/login">
@@ -60,7 +60,9 @@ function App() {
             Login
           </Button>
         </AppBar>
-        <LoginForm />
+        <StyledFormDiv>
+          <LoginForm />
+        </StyledFormDiv>
       </Route>
       <Route path="/renterPage" component={RenterPage} />
       <Route path="/techPage" component={TechPage} />
