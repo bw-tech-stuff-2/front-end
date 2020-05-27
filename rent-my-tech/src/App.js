@@ -2,54 +2,54 @@ import React, {useState, useEffect} from 'react';
 import './App.css';
 import SignupForm from "./components/SignupForm";
 import LoginForm from "./components/LoginForm";
-import * as yup from "yup";
-import LoginFormSchema from "./validation/LoginFormSchema";
-import SignupFormSchema from "./validation/SignupFormSchema";
+// import * as yup from "yup";
+// import LoginFormSchema from "./validation/LoginFormSchema";
+// import SignupFormSchema from "./validation/SignupFormSchema";
 import axios from "axios";
 import {Route, NavLink, useHistory} from "react-router-dom";
 
 function App() {
   // const initialRentersList = [];
   // const initialOwnersList = [];
-  const initialUserValues = {
-    fullName: "",
-    username: "",
-    password: "",
-    email: "",
-    userType: "",
-  }
+  // const initialUserValues = {
+  //   fullName: "",
+  //   username: "",
+  //   password: "",
+  //   email: "",
+  //   userType: "",
+  // }
   // const initialLoginValues = {
   //   username: "",
   //   password: "",
   //   userType: "",
   // }
-  const initialSignUpFormErrors = {
-    fullName: "",
-    username: "",
-    password: "",
-    userType: "",
-  }
-  const initialLoginFormErrors = {
-    fullName: "",
-    username: "",
-    password: "",
-    userType: "",
-  }
-  const initialDisabled = false;
+  // const initialSignUpFormErrors = {
+  //   fullName: "",
+  //   username: "",
+  //   password: "",
+  //   userType: "",
+  // }
+  // const initialLoginFormErrors = {
+  //   fullName: "",
+  //   username: "",
+  //   password: "",
+  //   userType: "",
+  // }
+  // const initialDisabled = false;
   
   // const [renters, setRenters] = useState(initialRentersList);
   // const [owners, setOwners] = useState(initialOwnersList);
-  const [userValues, setUserValues] = useState(initialUserValues);
+  // const [userValues, setUserValues] = useState(initialUserValues);
   // const [loginValues, setLoginValues] = useState(initialLoginValues);
-  const [signupFormErrors, setSignupFormErrors] = useState(initialSignUpFormErrors);
-  const [loginFormErrors, setLoginFormErrors] = useState(initialLoginFormErrors)
-  const [disabled, setDisabled] = useState(initialDisabled);
-  const [token, setToken] = useState("");
-  const history = useHistory();
-  const {push} = history;
+  // const [signupFormErrors, setSignupFormErrors] = useState(initialSignUpFormErrors);
+  // const [loginFormErrors, setLoginFormErrors] = useState(initialLoginFormErrors)
+  // const [disabled, setDisabled] = useState(initialDisabled);
+  // const [token, setToken] = useState("");
+  // const history = useHistory();
+  // const {push} = history;
 
-  const onSignupInputChange = evt => {
-    const {name, value} = evt.target;
+  // const onSignupInputChange = evt => {
+  //   const {name, value} = evt.target;
     // yup
     //   .reach(SignupFormSchema, name)
     //   .validate(value)
@@ -59,11 +59,11 @@ function App() {
     //   .catch(err => {
     //     setSignupFormErrors({...signupFormErrors, [name]: err.errors[0]})
     //   })
-    setUserValues({...userValues, [name]: value});
-  }
+  //   setUserValues({...userValues, [name]: value});
+  // }
 
-  const onLoginInputChange = evt => {
-    const {name, value} = evt.target;
+  // const onLoginInputChange = evt => {
+  //   const {name, value} = evt.target;
     // yup
     //   .reach(LoginFormSchema, name)
     //   .validate(value)
@@ -73,35 +73,35 @@ function App() {
     //   .catch(err => {
     //     setLoginFormErrors({...loginFormErrors, [name]: err.errors[0]})
     //   })
-    setUserValues({...userValues, [name]: value});
-  }
+  //   setUserValues({...userValues, [name]: value});
+  // }
 
-  const postNewUser = newUser => {
-    let postUser = {
-      username: newUser.username,
-      password: newUser.password,
-      email: newUser.email,
-    }
-    if (newUser.userType === "renter") {
-      postUser.renterName = newUser.fullName;
-      axios.post("https://usemytechstuff2.herokuapp.com/api/renters/auth/register", postUser)
-        .then(res => {
-          console.log(res)
-          setToken(res.data.token)
-          console.log(token)
-        })
-        .finally(setUserValues(initialUserValues))
-    } else if (newUser.userType === "owner") {
-      postUser.ownerName = newUser.fullName;
-      axios.post("https://usemytechstuff2.herokuapp.com/api/owners/auth/register", postUser)
-        .then(res => {
-          console.log(res)
-          setToken(res.data.token)
-          console.log(token)
-        })
-        .finally(setUserValues(initialUserValues))
-    }
-  }
+  // const postNewUser = newUser => {
+  //   let postUser = {
+  //     username: newUser.username,
+  //     password: newUser.password,
+  //     email: newUser.email,
+  //   }
+  //   if (newUser.userType === "renter") {
+  //     postUser.renterName = newUser.fullName;
+  //     axios.post("https://usemytechstuff2.herokuapp.com/api/renters/auth/register", postUser)
+  //       .then(res => {
+  //         console.log(res)
+  //         setToken(res.data.token)
+  //         console.log(token)
+  //       })
+  //       .finally(setUserValues(initialUserValues))
+  //   } else if (newUser.userType === "owner") {
+  //     postUser.ownerName = newUser.fullName;
+  //     axios.post("https://usemytechstuff2.herokuapp.com/api/owners/auth/register", postUser)
+  //       .then(res => {
+  //         console.log(res)
+  //         setToken(res.data.token)
+  //         console.log(token)
+  //       })
+  //       .finally(setUserValues(initialUserValues))
+  //   }
+  // }
 
   // useEffect(() => {
   //   SignupFormSchema.isValid(userValues)
@@ -117,34 +117,34 @@ function App() {
   //     })
   // }, [loginValues])
 
-  const onSubmitSignup = evt => {
-    evt.preventDefault()
+  // const onSubmitSignup = evt => {
+  //   evt.preventDefault()
 
-    const newUser = {
-      username: userValues.username.trim(),
-      password: userValues.password.trim(),
-      fullName: userValues.fullName.trim(),
-      email: userValues.email.trim(),
-      userType: userValues.userType.trim(),
-    }
-    postNewUser(newUser);
-  }
+  //   const newUser = {
+  //     username: userValues.username.trim(),
+  //     password: userValues.password.trim(),
+  //     fullName: userValues.fullName.trim(),
+  //     email: userValues.email.trim(),
+  //     userType: userValues.userType.trim(),
+  //   }
+  //   postNewUser(newUser);
+  // }
 
-  const onSubmitLogin = evt => {
-    evt.preventDefault()
-    const newUser = {
-      username: userValues.username.trim(),
-      password: userValues.password.trim(),
-      fullName: userValues.fullName.trim(),
-      userType: userValues.userType.trim(),
-    }
+  // const onSubmitLogin = evt => {
+  //   evt.preventDefault()
+  //   const newUser = {
+  //     username: userValues.username.trim(),
+  //     password: userValues.password.trim(),
+  //     fullName: userValues.fullName.trim(),
+  //     userType: userValues.userType.trim(),
+  //   }
 
-    axios.post("endpoint", newUser)
-      .then(res => {
-        push("/");
-        return res.data.token;
-      })
-  }
+  //   axios.post("endpoint", newUser)
+  //     .then(res => {
+  //       push("/");
+  //       return res.data.token;
+  //     })
+  // }
 
   return (
     <div>
@@ -161,7 +161,7 @@ function App() {
           <NavLink className="signupLink" to="/register">Register</NavLink>
           <NavLink className="loginLink" to="/login">Login</NavLink>
         </nav>
-        <SignupForm values={userValues} onSignupInputChange={onSignupInputChange} onSubmit={onSubmitSignup} disabled={disabled} errors={signupFormErrors}></SignupForm>
+        <SignupForm />
       </Route>
       <Route path="/login">
         <nav>
@@ -169,7 +169,7 @@ function App() {
           <NavLink className="signupLink" to="/register">Register</NavLink>
           <NavLink className="loginLink" to="/login">Login</NavLink>
         </nav>
-        <LoginForm values={userValues} onLoginInputChange={onLoginInputChange} onSubmit={onSubmitLogin} disabled={disabled} errors={loginFormErrors}></LoginForm>
+        <LoginForm />
       </Route>
     </div>
   );

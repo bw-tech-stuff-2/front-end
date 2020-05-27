@@ -14,7 +14,10 @@ const SignupFormSchema = yup.object().shape({
         .email("The email must be a valid email."),
     fullName: yup.string()
         .trim()
-        .required("The full name is a required field.")
+        .required("The full name is a required field."),
+    userType: yup.string()
+        .trim()
+        .required("You must select if you are an owner and a renter.")
 })
 
 export default SignupFormSchema
