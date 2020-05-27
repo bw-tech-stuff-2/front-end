@@ -5,8 +5,7 @@ import LoginForm from "./components/LoginForm";
 import { Route, NavLink } from "react-router-dom";
 import RenterPage from "./components/RenterPage";
 import TechPage from "./components/TechPage";
-import AppBar from "@material-ui/core/AppBar";
-import Button from "@material-ui/core/Button";
+import { AppBar, Button } from "@material-ui/core";
 import styled from "styled-components";
 
 const StyledFormDiv = styled.div`

@@ -9,6 +9,12 @@ import RequestItem from "./RequestItem";
 
 // Actions
 import { getRequestItems } from "../store/actions/";
+import styled from "styled-components";
+
+const StyledDiv = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 
 const RenterPage = (props) => {
   useEffect(() => {
@@ -19,10 +25,12 @@ const RenterPage = (props) => {
     <>
       <p>Req Page</p>
       {props.isFetching && <p>Fetching Items..</p>} {/*Cool spinner here*/}
-      {props.requestList &&
-        props.requestList.map((item) => {
-          return <RequestItem key={item.id} item={item} />;
-        })}
+      <StyledDiv>
+        {props.requestList &&
+          props.requestList.map((item) => {
+            return <RequestItem key={item.id} item={item} />;
+          })}
+      </StyledDiv>
     </>
   );
 };

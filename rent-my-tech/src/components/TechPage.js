@@ -23,9 +23,9 @@ const TechPage = (props) => {
 
       {props.isFetching && <p>Fetching Items...</p>}
       <StyledDiv>
-      {props.techList.map((item) => {
-        return <TechItem key={item.id} item={item} />;
-      })}
+        {props.techList.map((item) => {
+          return <TechItem key={item.id} item={item} />;
+        })}
       </StyledDiv>
     </>
   );
