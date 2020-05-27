@@ -1,12 +1,15 @@
 import React, {useState} from 'react'
 import {connect} from 'react-redux'
 import {putRequestCurrentItem} from '../store/actions'
+import {useHistory} from "react-router-dom"
 
 const RenterPageInfo = props => {
     const [putPayload, setPutPayload] = useState({
         request: "",
         rentersId: 1
     })
+
+    const history = useHistory()
 
     const handleNewRequest = () => {
         // PUT ACTION CALL -> update api + state
@@ -17,6 +20,9 @@ const RenterPageInfo = props => {
         })
 
         props.putRequestCurrentItem(props.item.id, putPayload)
+        setTimeout(() => {
+            history.push("/renterPage")
+        }, 300)
     }
 
     const onRequestChange = e => {
