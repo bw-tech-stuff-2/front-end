@@ -9,56 +9,70 @@ import { AppBar, Button } from "@material-ui/core";
 import styled from "styled-components";
 
 const StyledFormDiv = styled.div`
-  margin: 100px 0 0 0;
+  margin: 170px 0 0 0;
   display: flex;
   flex-flow: column;
   text-align: center;
+`;
+
+const StyledAppBar = styled(AppBar)`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;
+
+const StyledButton = styled(Button)`
+  width: 10%;
 `;
 
 function App() {
   return (
     <div>
       <Route exact path="/">
-        <AppBar>
-          <Button component={NavLink} color="inherit" className="homeLink" to="/">
+        <StyledAppBar>
+          <h2>Use My Tech Stuff</h2>
+          <StyledButton component={NavLink} color="inherit" className="homeLink" to="/">
             Home
-          </Button>
-          <Button component={NavLink} color="inherit" className="signupLink" to="/register">
+          </StyledButton>
+          <StyledButton component={NavLink} color="inherit" className="signupLink" to="/register">
             Register
-          </Button>
-          <Button component={NavLink} color="inherit" className="loginLink" to="/login">
+          </StyledButton>
+          <StyledButton component={NavLink} color="inherit" className="loginLink" to="/login">
             Login
-          </Button>
-        </AppBar>
+          </StyledButton>
+        </StyledAppBar>
       </Route>
       <Route path="/register">
-        <AppBar>
-          <Button component={NavLink} color="inherit" className="homeLink" to="/">
+        <StyledAppBar>
+          <h2>Use My Tech Stuff</h2>
+          <StyledButton component={NavLink} color="inherit" className="homeLink" to="/">
             Home
-          </Button>
-          <Button component={NavLink} color="inherit" className="signupLink" to="/register">
+          </StyledButton>
+          <StyledButton component={NavLink} color="inherit" className="signupLink" to="/register">
             Register
-          </Button>
-          <Button component={NavLink} color="inherit" className="loginLink" to="/login">
+          </StyledButton>
+          <StyledButton component={NavLink} color="inherit" className="loginLink" to="/login">
             Login
-          </Button>
-        </AppBar>
+          </StyledButton>
+        </StyledAppBar>
         <StyledFormDiv>
           <SignupForm />
         </StyledFormDiv>
       </Route>
       <Route path="/login">
-        <AppBar>
-          <Button component={NavLink} color="inherit" className="homeLink" to="/">
+        <StyledAppBar>
+          <h2>Use My Tech Stuff</h2>
+          <StyledButton component={NavLink} color="inherit" className="homeLink" to="/">
             Home
-          </Button>
-          <Button component={NavLink} color="inherit" className="signupLink" to="/register">
+          </StyledButton>
+          <StyledButton component={NavLink} color="inherit" className="signupLink" to="/register">
             Register
-          </Button>
-          <Button component={NavLink} color="inherit" className="loginLink" to="/login">
+          </StyledButton>
+          <StyledButton component={NavLink} color="inherit" className="loginLink" to="/login">
             Login
-          </Button>
-        </AppBar>
+          </StyledButton>
+        </StyledAppBar>
         <StyledFormDiv>
           <LoginForm />
         </StyledFormDiv>
