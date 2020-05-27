@@ -4,7 +4,7 @@ import SignupFormSchema from "../validation/SignupFormSchema";
 import * as yup from "yup";
 import Select from "@material-ui/core/Select";
 import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
+// import Button from "@material-ui/core/Button";
 
 const SignupForm = (props) => {
 
@@ -109,7 +109,7 @@ const SignupForm = (props) => {
                 <TextField value={userValues.email} onChange={onSignupInputChange} name="email" label="Email"></TextField>
             <div>{signupFormErrors.email}</div>
             <br></br>
-            <Button disabled={disabled} className="submit" variant="contained" color="primary">Register</Button>
+            <button disabled={disabled} className="submit" variant="contained" color="primary">Register</button>
         </form>
     );
 }
