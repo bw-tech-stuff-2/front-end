@@ -6,13 +6,15 @@ import { Route, NavLink } from "react-router-dom";
 
 import RenterPage from "./components/RenterPage";
 import TechPage from "./components/TechPage";
-<<<<<<< HEAD
 import RenterPageInfo from './components/RenterPageInfo'
 import TechPageInfo from './components/TechPageInfo'
 import PrivateRoute from './components/PrivateRoute'
-=======
-import AppBar from "@material-ui/core/AppBar";
-import Button from "@material-ui/core/Button";
+// import AppBar from "@material-ui/core/AppBar";
+// import Button from "@material-ui/core/Button";
+import {
+  AppBar,
+  Button
+} from '@material-ui/core'
 import styled from "styled-components";
 
 const StyledFormDiv = styled.div`
@@ -21,7 +23,6 @@ const StyledFormDiv = styled.div`
   flex-flow: column;
   text-align: center;
 `;
->>>>>>> 011ae84fe41d092c47061cf99be803e8a0492c7c
 
 function App() {
   return (

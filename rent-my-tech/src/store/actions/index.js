@@ -77,9 +77,17 @@ export const getRequestCurrentItem = (id) => {
   };
 };
 
-export const putRequestCurrentItem = id => {
+export const putRequestCurrentItem = (id, putPayload) => {
     return dispatch => {
         dispatch({type: PUT_REQUEST_CURRENT_ITEM_START, payload: {error: "", isFetching: true}})
+        axiosWithAuth()
+            .put(`/api/request/${id}`, putPayload)
+            .then(() => {
+                dispatch({type: PUT_REQUEST_CURRENT_ITEM_SUCCESS, payload: {error: "", isFetching: false}})
+            })
+            .catch(() => {
+                dispatch({type: PUT_REQUEST_CURRENT_ITEM_FAIL, payload: {error: "TRY COMING FROM /renterPage instead", isFetching: false}})
+            })
     }
 }
 
