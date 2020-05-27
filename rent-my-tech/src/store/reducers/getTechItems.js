@@ -1,60 +1,64 @@
 import {
-  GET_REQUEST_ITEMS_START,
-  GET_REQUEST_ITEMS_SUCCESS,
-  GET_REQUEST_ITEMS_FAIL,
-  GET_REQUEST_CURRENT_ITEM_START,
-  GET_REQUEST_CURRENT_ITEM_SUCCESS,
-  GET_REQUEST_CURRENT_ITEM_FAIL,
-} from "../actions/";
+  GET_TECH_ITEMS_START,
+  GET_TECH_ITEMS_SUCCESS,
+  GET_TECH_ITEMS_FAIL,
+  GET_TECH_CURRENT_ITEM_START,
+  GET_TECH_CURRENT_ITEM_SUCCESS,
+  GET_TECH_CURRENT_ITEM_FAIL,
+} from "../actions";
 
-const initalState = {
+const initialState = {
   isFetching: false,
   error: "",
-  requestList: [],
-  currentRequestItem: {},
+  techList: [],
+  currentTechItem: {},
 };
 
-export const getRequestItems = (state = initalState, action) => {
+export const getTechItems = (state = initialState, action) => {
   switch (action.type) {
-    case GET_REQUEST_ITEMS_START:
+    case GET_TECH_ITEMS_START:
       return {
         ...state,
         isFetching: action.payload.isFetching,
         error: action.payload.error,
       };
-    case GET_REQUEST_ITEMS_SUCCESS:
+    case GET_TECH_ITEMS_SUCCESS:
       return {
         ...state,
         isFetching: action.payload.isFetching,
         error: action.payload.error,
-        requestList: action.payload.requestList,
+        techList: action.payload.techList,
       };
 
-    case GET_REQUEST_ITEMS_FAIL:
+    case GET_TECH_ITEMS_FAIL:
       return {
         ...state,
         isFetching: action.payload.isFetching,
         error: action.payload.error,
       };
-    case GET_REQUEST_CURRENT_ITEM_START:
+
+    case GET_TECH_CURRENT_ITEM_START:
       return {
         ...state,
         isFetching: action.payload.isFetching,
         error: action.payload.error,
       };
-    case GET_REQUEST_CURRENT_ITEM_SUCCESS:
+
+    case GET_TECH_CURRENT_ITEM_SUCCESS:
       return {
         ...state,
         isFetching: action.payload.isFetching,
         error: action.payload.error,
-        currentRequestItem: action.payload.currentRequestItem,
+        currentTechItem: action.payload.currentTechItem,
       };
-    case GET_REQUEST_CURRENT_ITEM_FAIL:
+
+    case GET_TECH_CURRENT_ITEM_FAIL:
       return {
         ...state,
         isFetching: action.payload.isFetching,
         error: action.payload.error,
       };
+
     default: {
       return {
         ...state,
