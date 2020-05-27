@@ -3,8 +3,12 @@ import "./App.css";
 import SignupForm from "./components/SignupForm";
 import LoginForm from "./components/LoginForm";
 import { Route, NavLink } from "react-router-dom";
+
 import RenterPage from "./components/RenterPage";
 import TechPage from "./components/TechPage";
+import RenterPageInfo from './components/RenterPageInfo'
+import TechPageInfo from './components/TechPageInfo'
+import PrivateRoute from './components/PrivateRoute'
 import { AppBar, Button } from "@material-ui/core";
 import styled from "styled-components";
 
@@ -77,8 +81,10 @@ function App() {
           <LoginForm />
         </StyledFormDiv>
       </Route>
-      <Route path="/renterPage" component={RenterPage} />
-      <Route path="/techPage" component={TechPage} />
+      <PrivateRoute path="/renterPage" component={RenterPage} />
+      <PrivateRoute path="/techPage" component={TechPage} />
+      <PrivateRoute path="/renterPageInfo" component={RenterPageInfo} />
+      {/* <Route path="/techPageInfo" component={TechPageInfo} /> */}
     </div>
   );
 }

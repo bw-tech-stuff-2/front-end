@@ -10,6 +10,11 @@ export const GET_REQUEST_CURRENT_ITEM_SUCCESS =
   "GET_REQUEST_CURRENT_ITEM_SUCCESS";
 export const GET_REQUEST_CURRENT_ITEM_FAIL = "GET_REQUEST_CURRENT_ITEM_FAIL";
 
+export const PUT_REQUEST_CURRENT_ITEM_START = "PUT_REQUEST_CURRENT_ITEM_START";
+export const PUT_REQUEST_CURRENT_ITEM_SUCCESS =
+  "PUT_REQUEST_CURRENT_ITEM_SUCESS";
+export const PUT_REQUEST_CURRENT_ITEM_FAIL = "PUT_REQUEST_CURRENT_ITEM_FAIL";
+
 //Codys Actions
 export const GET_TECH_ITEMS_START = "GET_TECH_ITEMS_START";
 export const GET_TECH_ITEMS_SUCCESS = "GET_TECH_ITEMS_SUCCESS";
@@ -18,6 +23,10 @@ export const GET_TECH_ITEMS_FAIL = "GET_TECH_ITEMS_FAIL";
 export const GET_TECH_CURRENT_ITEM_START = "GET_TECH_CURRENT_ITEM_START";
 export const GET_TECH_CURRENT_ITEM_SUCCESS = "GET_TECH_CURRENT_ITEM_SUCCESS";
 export const GET_TECH_CURRENT_ITEM_FAIL = "GET_TECH_CURRENT_ITEM_FAIL";
+
+export const PUT_TECH_CURRENT_ITEM_START = "PUT_TECH_CURRENT_ITEM_START";
+export const PUT_TECH_CURRENT_ITEM_SUCCESS = "PUT_TECH_CURRENT_ITEM_SUCCESS";
+export const PUT_TECH_CURRENT_ITEM_FAIL = "PUT_TECH_CURRENT_ITEM_FAIL";
 
 //Calebs Functions
 
@@ -74,6 +83,32 @@ export const getRequestCurrentItem = (id) => {
   };
 };
 
+export const putRequestCurrentItem = (id, putPayload) => {
+  return (dispatch) => {
+    dispatch({
+      type: PUT_REQUEST_CURRENT_ITEM_START,
+      payload: { error: "", isFetching: true },
+    });
+    axiosWithAuth()
+      .put(`/api/request/${id}`, putPayload)
+      .then(() => {
+        dispatch({
+          type: PUT_REQUEST_CURRENT_ITEM_SUCCESS,
+          payload: { error: "", isFetching: false },
+        });
+      })
+      .catch(() => {
+        dispatch({
+          type: PUT_REQUEST_CURRENT_ITEM_FAIL,
+          payload: {
+            error: "TRY COMING FROM /renterPage instead",
+            isFetching: false,
+          },
+        });
+      });
+  };
+};
+
 //Codys Functiions
 
 export const getTechItems = () => {
@@ -102,7 +137,7 @@ export const getTechItems = () => {
   };
 };
 
-export const getCurrentTechItems = (id) => {
+export const getCurrentTechItem = (id) => {
   return (dispatch) => {
     dispatch({
       type: GET_TECH_CURRENT_ITEM_START,
@@ -124,6 +159,32 @@ export const getCurrentTechItems = (id) => {
         dispatch({
           type: GET_TECH_CURRENT_ITEM_FAIL,
           payload: { error: "TRY COMING FROM RENTERPAGE", isFetching: false },
+        });
+      });
+  };
+};
+
+export const putTechCurrentItem = (id, putPayload) => {
+  return (dispatch) => {
+    dispatch({
+      type: PUT_TECH_CURRENT_ITEM_START,
+      payload: { error: "", isFetching: true },
+    });
+    axiosWithAuth()
+      .put(`/api/request/${id}`, putPayload)
+      .then(() => {
+        dispatch({
+          type: PUT_TECH_CURRENT_ITEM_SUCCESS,
+          payload: { error: "", isFetching: false },
+        });
+      })
+      .catch(() => {
+        dispatch({
+          type: PUT_TECH_CURRENT_ITEM_FAIL,
+          payload: {
+            error: "TRY COMING FROM /techPage instead",
+            isFetching: false,
+          },
         });
       });
   };
