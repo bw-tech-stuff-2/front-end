@@ -77,13 +77,13 @@ function App() {
   }
 
   const postNewUser = newUser => {
-    const postUser = {
-      ownerName: newUser.fullName,
+    let postUser = {
       username: newUser.username,
       password: newUser.password,
       email: newUser.email,
     }
     if (newUser.userType === "renter") {
+      postUser.renterName = newUser.fullName;
       axios.post("https://usemytechstuff2.herokuapp.com/api/renters/auth/register", postUser)
         .then(res => {
           console.log(res)
@@ -92,7 +92,8 @@ function App() {
         })
         .finally(setUserValues(initialUserValues))
     } else if (newUser.userType === "owner") {
-      axios.post("https://usemytechstuff2.herokuapp.com/api/owners/auth/login", postUser)
+      postUser.ownerName = newUser.fullName;
+      axios.post("https://usemytechstuff2.herokuapp.com/api/owners/auth/register", postUser)
         .then(res => {
           console.log(res)
           setToken(res.data.token)
