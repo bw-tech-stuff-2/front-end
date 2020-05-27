@@ -4,8 +4,8 @@ import React, {useEffect} from 'react'
 // Redux Stuff
 import {connect} from 'react-redux'
 
-// Utils
-// import {axiosWithAuth} from '../utils/axiosWithAuth'
+// Components
+import RequestItem from './RequestItem'
 
 // Actions
 import {getRequestItems} from '../store/actions/'
@@ -20,17 +20,8 @@ const RenterPage = props =>  {
             <p>Req Page</p>
             {props.isFetching && <p>Fetching Items..</p>} {/*Cool spinner here*/}
             {props.requestList && props.requestList.map(item => {
-                return (
-                    <div>
-                        <p>{item.id}</p>
-                        <p>{item.techItem}</p>
-                        <p>{item.techDescription}</p>
-                        <p>{item.owner}</p>
-                        <p>{item.price}</p>
-                        <p>{item.request}</p>
-                        <p>{item.rentersId}</p>
-                        <p>{item.username}</p>
-                    </div>
+                return ( 
+                    <RequestItem key={item.id} item={item} />
                 )
             })}
         </>
