@@ -4,25 +4,29 @@ import React, {useEffect} from 'react'
 // Redux Stuff
 import {connect} from 'react-redux'
 
-// Utils
-// import {axiosWithAuth} from '../utils/axiosWithAuth'
+// Components
+import RequestItem from './RequestItem'
 
 // Actions
 import {getRequestItems} from '../store/actions/'
 
-const RenterPage = props => {
+const RenterPage = props =>  {
     useEffect(() => {
         props.getRequestItems()
-        console.log(props.requestList)
     }, [])
 
     return(
         <>
-            REQ ITEMS PAGE!
+            <p>Req Page</p>
+            {props.isFetching && <p>Fetching Items..</p>} {/*Cool spinner here*/}
+            {props.requestList && props.requestList.map(item => {
+                return ( 
+                    <RequestItem key={item.id} item={item} />
+                )
+            })}
         </>
-    )
+    )        
 }
-
 
 // using the token send a get request to api/request
 // set the list of items and their info into state using redux
@@ -34,9 +38,9 @@ const RenterPage = props => {
 
 const mapStateToProps = state => {
     return {
-        isFetching: state.isFetching,
-        error: state.error,
-        requestList: state.requestList
+        isFetching: state.getRequestItems.isFetching,
+        error: state.getRequestItems.error,
+        requestList: state.getRequestItems.requestList
     }
 }
 

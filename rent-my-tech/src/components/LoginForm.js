@@ -3,7 +3,6 @@ import { useHistory } from "react-router-dom"
 import * as yup from "yup";
 import LoginFormSchema from "../validation/LoginFormSchema";
 import axios from "axios";
-import {connect} from 'react-redux'
 
 const LoginForm = (props) => {
 
@@ -102,5 +101,5 @@ const LoginForm = (props) => {
     );
 }
 
-// export default LoginForm;
-export default connect(null, {})(LoginForm)
+export default LoginForm;
+// export default connect(null, {})(LoginForm)
