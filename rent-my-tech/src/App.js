@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import SignupForm from "./components/SignupForm";
 import LoginForm from "./components/LoginForm";
 import {Route, NavLink} from "react-router-dom";
 
 function App() {
+  const [token, setToken] = useState("");
   return (
     <div>
       <Route exact path = "/">
@@ -28,7 +29,7 @@ function App() {
           <NavLink className="signupLink" to="/register">Register</NavLink>
           <NavLink className="loginLink" to="/login">Login</NavLink>
         </nav>
-        <LoginForm />
+        <LoginForm token={token} setToken={setToken}/>
       </Route>
     </div>
   );
