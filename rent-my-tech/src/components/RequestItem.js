@@ -23,18 +23,8 @@ const RequestItem = props => {
 
     // Simon can touch up this component
     return (
-        // <div onClick={onClickHandler}>
-        //     <p>{item.id}</p>
-        //     <p>{item.techItem}</p>
-        //     <p>{item.techDescription}</p>
-        //     <p>{item.owner}</p>
-        //     <p>{item.price}</p>
-        //     <p>{item.request}</p>
-        //     <p>{item.rentersId}</p>
-        //     <p>{item.username}</p>
-        // </div>
-        <StyledCard onClick={onClickHandler}>
-            <CardContent>
+        <StyledCard >
+            <CardContent onClick={onClickHandler}>
                 <Typography variant="h5" component="h2">
                     {item.techItem}
                 </Typography>

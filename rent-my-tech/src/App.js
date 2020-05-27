@@ -9,12 +9,6 @@ import TechPage from "./components/TechPage";
 import RenterPageInfo from './components/RenterPageInfo'
 import TechPageInfo from './components/TechPageInfo'
 import PrivateRoute from './components/PrivateRoute'
-// import AppBar from "@material-ui/core/AppBar";
-// import Button from "@material-ui/core/Button";
-import {
-  AppBar,
-  Button
-} from '@material-ui/core'
 import { AppBar, Button } from "@material-ui/core";
 import styled from "styled-components";
 
