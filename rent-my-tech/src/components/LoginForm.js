@@ -4,7 +4,8 @@ import * as yup from "yup";
 import LoginFormSchema from "../validation/LoginFormSchema";
 import axios from "axios";
 
-const LoginForm = () => {
+const LoginForm = (props) => {
+    const {token, setToken} = props;
 
     const initialUserValues = {
         fullName: "",
@@ -24,7 +25,7 @@ const LoginForm = () => {
     const [userValues, setUserValues] = useState(initialUserValues);
     const [loginFormErrors, setLoginFormErrors] = useState(initialLoginFormErrors);
     const [disabled, setDisabled] = useState(initialDisabled);
-    //   const [token, setToken] = useState("");
+    // const [token, setToken] = useState("");
     const history = useHistory();
     const { push } = history;
     // Required: Username, Full Name, Password, Choice of Renter or Owner
@@ -52,12 +53,25 @@ const LoginForm = () => {
             fullName: userValues.fullName.trim(),
             userType: userValues.userType.trim(),
         }
-
-        axios.post("endpoint", newUser)
+        if (newUser.userType === "owner") {
+        axios.post("https://usemytechstuff2.herokuapp.com/api/owners/auth/login", newUser)
             .then(res => {
                 push("/");
-                return res.data.token;
+                setToken(res.data.token);
+                console.log(res.data.token);
+                console.log(token)
+                // return res.data.token;
             })
+        } else if (newUser.userType === "renter") {
+        axios.post("https://usemytechstuff2.herokuapp.com/api/renters/auth/login", newUser)
+        .then(res => {
+            push("/");
+            setToken(res.data.token);
+            console.log(res.data.token);
+            console.log(token)
+            // return res.data.token;
+        })
+        }
     }
 
     useEffect(() => {
