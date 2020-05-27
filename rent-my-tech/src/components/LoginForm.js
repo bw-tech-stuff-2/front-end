@@ -5,7 +5,7 @@ import LoginFormSchema from "../validation/LoginFormSchema";
 import axios from "axios";
 import Select from "@material-ui/core/Select";
 import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
+// import Button from "@material-ui/core/Button";
 
 const LoginForm = (props) => {
 
@@ -64,6 +64,7 @@ const LoginForm = (props) => {
         axios.post("https://usemytechstuff2.herokuapp.com/api/renters/auth/login", newUser)
             .then(res => {
                 window.localStorage.setItem("token", res.data.token)
+                console.log("hi")
                 push("/renterPage");
             })
         }
@@ -94,7 +95,7 @@ const LoginForm = (props) => {
                 <TextField type="password" value={userValues.password} onChange={onLoginInputChange} name="password" label="Password"></TextField>
             <div>{loginFormErrors.password}</div>
             <br></br>
-            <Button disabled={disabled} className="submit" variant="contained" color="primary">Sign In</Button>
+            <button disabled={disabled} className="submit" variant="contained" color="primary">Sign In</button>
         </form>
     );
 }

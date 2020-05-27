@@ -5,6 +5,12 @@ import { connect } from "react-redux";
 import TechItem from "./TechItem";
 
 import { getTechItems } from "../store/actions/";
+import styled from "styled-components";
+
+const StyledDiv = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 
 const TechPage = (props) => {
   useEffect(() => {
@@ -16,9 +22,11 @@ const TechPage = (props) => {
       <p>Tech Page</p>
 
       {props.isFetching && <p>Fetching Items...</p>}
+      <StyledDiv>
       {props.techList.map((item) => {
         return <TechItem key={item.id} item={item} />;
       })}
+      </StyledDiv>
     </>
   );
 };
