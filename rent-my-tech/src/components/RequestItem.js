@@ -35,6 +35,10 @@ const RequestItem = props => {
                 <Typography variant="body2" component="p">
                     {item.techDescription}
                 </Typography>
+                <br />
+                <Typography variant="body2" component="p">
+                    {item.request}
+                </Typography>
                 <br></br>
                 <Typography variant="caption">
                     {item.price}
