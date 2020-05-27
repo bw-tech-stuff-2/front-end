@@ -3,8 +3,7 @@ import { useHistory } from "react-router-dom"
 import * as yup from "yup";
 import LoginFormSchema from "../validation/LoginFormSchema";
 import axios from "axios";
-import Select from "@material-ui/core/Select";
-import TextField from "@material-ui/core/TextField";
+import { Select, TextField } from "@material-ui/core";
 // import Button from "@material-ui/core/Button";
 
 const LoginForm = (props) => {
@@ -55,18 +54,18 @@ const LoginForm = (props) => {
             userType: userValues.userType.trim(),
         }
         if (newUser.userType === "owner") {
-        axios.post("https://usemytechstuff2.herokuapp.com/api/owners/auth/login", newUser)
-            .then(res => {
-                window.localStorage.setItem("token", res.data.token)
-                push("/techPage");
-            })
+            axios.post("https://usemytechstuff2.herokuapp.com/api/owners/auth/login", newUser)
+                .then(res => {
+                    window.localStorage.setItem("token", res.data.token)
+                    push("/techPage");
+                })
         } else if (newUser.userType === "renter") {
-        axios.post("https://usemytechstuff2.herokuapp.com/api/renters/auth/login", newUser)
-            .then(res => {
-                window.localStorage.setItem("token", res.data.token)
-                console.log("hi")
-                push("/renterPage");
-            })
+            axios.post("https://usemytechstuff2.herokuapp.com/api/renters/auth/login", newUser)
+                .then(res => {
+                    window.localStorage.setItem("token", res.data.token)
+                    console.log("hi")
+                    push("/renterPage");
+                })
         }
     }
 
@@ -82,17 +81,16 @@ const LoginForm = (props) => {
             <h1>Login</h1>
             <label>I am a &nbsp;
                 <Select onChange={onLoginInputChange} value={userValues.userType} name="userType">
-                    <option value=""></option>
                     <option value="renter">Renter</option>
                     <option value="owner">Owner</option>
                 </Select>
             </label>
             <div>{loginFormErrors.userType}</div>
-                <TextField type="text" value={userValues.fullName} onChange={onLoginInputChange} name="fullName" label="Full Name"></TextField>
+            <TextField type="text" value={userValues.fullName} onChange={onLoginInputChange} name="fullName" label="Full Name"></TextField>
             <div>{loginFormErrors.fullName}</div>
-                <TextField type="text" value={userValues.username} onChange={onLoginInputChange} name="username" label="Username"></TextField>
+            <TextField type="text" value={userValues.username} onChange={onLoginInputChange} name="username" label="Username"></TextField>
             <div>{loginFormErrors.username}</div>
-                <TextField type="password" value={userValues.password} onChange={onLoginInputChange} name="password" label="Password"></TextField>
+            <TextField type="password" value={userValues.password} onChange={onLoginInputChange} name="password" label="Password"></TextField>
             <div>{loginFormErrors.password}</div>
             <br></br>
             <button disabled={disabled} className="submit" variant="contained" color="primary">Sign In</button>
