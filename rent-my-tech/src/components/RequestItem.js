@@ -1,11 +1,17 @@
 import React from 'react'
+import { getRequestCurrentItem } from '../store/actions'
+import {connect} from 'react-redux'
+import {useHistory} from 'react-router-dom'
 
 const RequestItem = props => {
     const {item} = props
+    const history = useHistory()
 
     const onClickHandler = evt => {
         // Action call that sends a get request to /api/request/:id
         // then route to /RequestItemInfo page
+        props.getRequestCurrentItem(item.id)
+        history.push("/renterPageInfo")
     }
 
     // Simon can touch up this component
@@ -23,4 +29,4 @@ const RequestItem = props => {
     )
 }
 
-export default RequestItem
+export default connect(null, {getRequestCurrentItem})(RequestItem)

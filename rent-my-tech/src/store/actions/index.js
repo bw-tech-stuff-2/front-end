@@ -6,9 +6,12 @@ export const GET_REQUEST_ITEMS_SUCCESS = "GET_REQUEST_ITEMS_SUCCESS";
 export const GET_REQUEST_ITEMS_FAIL = "GET_REQUEST_ITEMS_FAIL";
 
 export const GET_REQUEST_CURRENT_ITEM_START = "GET_REQUEST_CURRENT_ITEM_START";
-export const GET_REQUEST_CURRENT_ITEM_SUCCESS =
-  "GET_REQUEST_CURRENT_ITEM_SUCCESS";
+export const GET_REQUEST_CURRENT_ITEM_SUCCESS = "GET_REQUEST_CURRENT_ITEM_SUCCESS";
 export const GET_REQUEST_CURRENT_ITEM_FAIL = "GET_REQUEST_CURRENT_ITEM_FAIL";
+
+export const PUT_REQUEST_CURRENT_ITEM_START = "PUT_REQUEST_CURRENT_ITEM_START"
+export const PUT_REQUEST_CURRENT_ITEM_SUCCESS = "PUT_REQUEST_CURRENT_ITEM_SUCESS"
+export const PUT_REQUEST_CURRENT_ITEM_FAIL = "PUT_REQUEST_CURRENT_ITEM_FAIL"
 
 //Codys Actions
 export const GET_TECH_ITEMS_START = "GET_TECH_ITEMS_START";
@@ -73,6 +76,12 @@ export const getRequestCurrentItem = (id) => {
       });
   };
 };
+
+export const putRequestCurrentItem = id => {
+    return dispatch => {
+        dispatch({type: PUT_REQUEST_CURRENT_ITEM_START, payload: {error: "", isFetching: true}})
+    }
+}
 
 //Codys Functiions
 
