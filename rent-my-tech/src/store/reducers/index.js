@@ -1,10 +1,10 @@
 import {combineReducers} from 'redux'
-import {getTokenRealQuick} from './getTokenRealQuick'
-// import reducer2 from './reducer2'
+import {setToken} from './setToken'
+import {getRequestItems} from './getRequestItems'
 
 export default combineReducers({
-    getTokenRealQuick,
-    // reducer2,
+    setToken,
+    getRequestItems
     // reducer3,
     // etc...
 })

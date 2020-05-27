@@ -3,9 +3,9 @@ import { useHistory } from "react-router-dom"
 import * as yup from "yup";
 import LoginFormSchema from "../validation/LoginFormSchema";
 import axios from "axios";
+import {connect} from 'react-redux'
 
 const LoginForm = (props) => {
-    const {token, setToken} = props;
 
     const initialUserValues = {
         fullName: "",
@@ -25,7 +25,6 @@ const LoginForm = (props) => {
     const [userValues, setUserValues] = useState(initialUserValues);
     const [loginFormErrors, setLoginFormErrors] = useState(initialLoginFormErrors);
     const [disabled, setDisabled] = useState(initialDisabled);
-    // const [token, setToken] = useState("");
     const history = useHistory();
     const { push } = history;
     // Required: Username, Full Name, Password, Choice of Renter or Owner
@@ -56,21 +55,15 @@ const LoginForm = (props) => {
         if (newUser.userType === "owner") {
         axios.post("https://usemytechstuff2.herokuapp.com/api/owners/auth/login", newUser)
             .then(res => {
-                push("/");
-                setToken(res.data.token);
-                console.log(res.data.token);
-                console.log(token)
-                // return res.data.token;
+                window.localStorage.setItem("token", res.data.token)
+                push("/techPage");
             })
         } else if (newUser.userType === "renter") {
         axios.post("https://usemytechstuff2.herokuapp.com/api/renters/auth/login", newUser)
-        .then(res => {
-            push("/");
-            setToken(res.data.token);
-            console.log(res.data.token);
-            console.log(token)
-            // return res.data.token;
-        })
+            .then(res => {
+                window.localStorage.setItem("token", res.data.token)
+                push("/renterPage");
+            })
         }
     }
 
@@ -109,4 +102,5 @@ const LoginForm = (props) => {
     );
 }
 
-export default LoginForm;
+// export default LoginForm;
+export default connect(null, {})(LoginForm)

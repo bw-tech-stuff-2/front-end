@@ -1,39 +1,40 @@
 import {
-    GET_TOKEN_START,
-    GET_TOKEN_SUCCESS,
-    GET_TOKEN_FAIL
-} from "../actions"
+    GET_REQUEST_ITEMS_START,
+    GET_REQUEST_ITEMS_SUCCESS,
+    GET_REQUEST_ITEMS_FAIL
+} from '../actions/'
 
 const initalState = {
-    token: null,
     isFetching: false,
     error: "",
+    requestList: []
 }
 
-export const getTokenRealQuick = (state=initalState, action) => {
+export const getRequestItems = (state=initalState, action) => {
     switch(action.type) {
-        case GET_TOKEN_START:
+        case GET_REQUEST_ITEMS_START:
             return {
                 ...state,
                 isFetching: action.payload.isFetching,
                 error: action.payload.error
             }
-        case GET_TOKEN_SUCCESS:
+        case GET_REQUEST_ITEMS_SUCCESS:
             return {
                 ...state,
                 isFetching: action.payload.isFetching,
                 error: action.payload.error,
-                token: action.payload.token
+                requestList: action.payload.requestList
             }
-        case GET_TOKEN_FAIL: 
+        case GET_REQUEST_ITEMS_FAIL:
             return {
                 ...state,
                 isFetching: action.payload.isFetching,
                 error: action.payload.error,
             }
-        default:
-            return (
-                {...state}
-            )
+        default: {
+            return {
+                ...state
+            }
+        }
     }
 }

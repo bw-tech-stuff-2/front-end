@@ -1,16 +1,23 @@
-import {axiosWithAuth} from '../../utils/axiosWithAuth'
+import { axiosWithAuth } from "../../utils/axiosWithAuth"
 
-export const GET_TOKEN_START = "GET_TOKEN_START"
-export const GET_TOKEN_SUCCESS = "GET_TOKEN_SUCCESS"
-export const GET_TOKEN_FAIL = "GET_TOKEN_FAIL"
+export const SET_TOKEN = "SET_TOKEN"
+export const GET_REQUEST_ITEMS_START = "GET_REQUEST_ITEMS_START"
+export const GET_REQUEST_ITEMS_SUCCESS = "GET_REQUEST_ITEMS_SUCCESS"
+export const GET_REQUEST_ITEMS_FAIL = "GET_REQUEST_ITEMS_FAIL"
 
-export const getTokenRealQuick = user => dispatch => {
-    dispatch({type: GET_TOKEN_START, payload: {error: "", isFetching: true}})
-    axiosWithAuth.post("/api/renters/auth/login", user)
+export const setToken = token => {
+    return {type: SET_TOKEN, payload: token}
+}
+
+export const getRequestItems = () => {
+    return dispatch => {
+        dispatch({type: GET_REQUEST_ITEMS_START, payload: {error: "", isFetching: true}})
+        axiosWithAuth().get("/api/request")
         .then(res => {
-            dispatch({type: GET_TOKEN_SUCCESS, payload: {token: res.data.token, error: "", isFetching: false}})
+            dispatch({type: GET_REQUEST_ITEMS_SUCCESS, payload: {error: "", isFetching: false, requestList: res.data}})
         })
         .catch(() => {
-            dispatch({type: GET_TOKEN_FAIL, payload: {error: "SOMETHING WENT HORRIBLY WRONG...", isFetching: false}})
+            dispatch({type: GET_REQUEST_ITEMS_FAIL, payload: {error: "SOMETHING WENT HORRIBLY WORNG", isFetching: false}})
         })
+    }
 }
