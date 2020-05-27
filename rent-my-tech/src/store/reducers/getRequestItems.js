@@ -5,7 +5,11 @@ import {
   GET_REQUEST_CURRENT_ITEM_START,
   GET_REQUEST_CURRENT_ITEM_SUCCESS,
   GET_REQUEST_CURRENT_ITEM_FAIL,
+  PUT_REQUEST_CURRENT_ITEM_START,
+  PUT_REQUEST_CURRENT_ITEM_SUCCESS,
+  PUT_REQUEST_CURRENT_ITEM_FAIL
 } from "../actions/";
+import { act } from "react-dom/test-utils";
 
 const initalState = {
   isFetching: false,
@@ -55,6 +59,24 @@ export const getRequestItems = (state = initalState, action) => {
         isFetching: action.payload.isFetching,
         error: action.payload.error,
       };
+    case PUT_REQUEST_CURRENT_ITEM_START: 
+      return {
+        ...state,
+        isFetching: action.payload.isFetching,
+        error: action.payload.error
+      }
+    case PUT_REQUEST_CURRENT_ITEM_SUCCESS:
+      return {
+        ...state,
+        isFetching: action.payload.isFetching,
+        error: action.payload.error
+      }
+    case PUT_REQUEST_CURRENT_ITEM_FAIL:
+      return {
+        ...state,
+        isFetching: action.payload.isFetching,
+        error: action.payload.error
+      }
     default: {
       return {
         ...state,

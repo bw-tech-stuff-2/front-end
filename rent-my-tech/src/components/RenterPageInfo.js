@@ -1,4 +1,55 @@
-// here the renter will be able to see what item they clicked on in greater detail
-// and will be able to make a request on that item
-// after the request is updated by the put request the user will be taken back to the RenterPage component
+import React, {useState} from 'react'
+import {connect} from 'react-redux'
+import {putRequestCurrentItem} from '../store/actions'
+
+const RenterPageInfo = props => {
+    const [putPayload, setPutPayload] = useState({
+        request: "",
+        rentersId: 1
+    })
+
+    const handleNewRequest = () => {
+        // PUT ACTION CALL -> update api + state
+        // needs request
+        setPutPayload({
+            ...putPayload, 
+            rentersId: props.item.rentersId
+        })
+
+        props.putRequestCurrentItem(props.item.id, putPayload)
+    }
+
+    const onRequestChange = e => {
+        const value = e.target.value
+        setPutPayload({
+            ...putPayload,
+            request: value
+        })
+    }
+
+    return (
+        <>
+            <p>Renter Item Info</p>
+            {props.error && <p>{props.error}</p>}
+            {props.isFetching && <p>Getting info...</p>}
+            {props.item && <p>{props.item.techItem}</p> }
+            <input 
+                type="text"
+                value={putPayload.request}
+                onChange={onRequestChange}
+            />
+            <button onClick={handleNewRequest}>Edit Request</button>
+        </>
+    )
+}
+
+const mapStateToProps = state => {
+    return {
+        item: state.request.currentRequestItem,
+        error: state.request.error,
+        isFetching: state.request.isFetching
+    }
+}
+
+export default connect(mapStateToProps, {putRequestCurrentItem})(RenterPageInfo)
 
