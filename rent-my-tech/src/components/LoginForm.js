@@ -3,6 +3,9 @@ import { useHistory } from "react-router-dom"
 import * as yup from "yup";
 import LoginFormSchema from "../validation/LoginFormSchema";
 import axios from "axios";
+import Select from "@material-ui/core/Select";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 
 const LoginForm = (props) => {
 
@@ -76,27 +79,22 @@ const LoginForm = (props) => {
     return (
         <form onSubmit={onSubmitLogin}>
             <h1>Login</h1>
-            <label>I am a
-                <select onChange={onLoginInputChange} value={userValues.userType} name="userType">
+            <label>I am a &nbsp;
+                <Select onChange={onLoginInputChange} value={userValues.userType} name="userType">
                     <option value=""></option>
                     <option value="renter">Renter</option>
                     <option value="owner">Owner</option>
-                </select>
+                </Select>
             </label>
             <div>{loginFormErrors.userType}</div>
-            <label>Username:
-                <input type="text" value={userValues.username} onChange={onLoginInputChange} name="username"></input>
-            </label>
-            <div>{loginFormErrors.username}</div>
-            <label>Password:
-                <input type="password" value={userValues.password} onChange={onLoginInputChange} name="password"></input>
-            </label>
-            <div>{loginFormErrors.password}</div>
-            <label>Full Name:
-                <input type="text" value={userValues.fullName} onChange={onLoginInputChange} name="fullName"></input>
-            </label>
+                <TextField type="text" value={userValues.fullName} onChange={onLoginInputChange} name="fullName" label="Full Name"></TextField>
             <div>{loginFormErrors.fullName}</div>
-            <button disabled={disabled} className="submit">Sign In</button>
+                <TextField type="text" value={userValues.username} onChange={onLoginInputChange} name="username" label="Username"></TextField>
+            <div>{loginFormErrors.username}</div>
+                <TextField type="password" value={userValues.password} onChange={onLoginInputChange} name="password" label="Password"></TextField>
+            <div>{loginFormErrors.password}</div>
+            <br></br>
+            <Button disabled={disabled} className="submit" variant="contained" color="primary">Sign In</Button>
         </form>
     );
 }

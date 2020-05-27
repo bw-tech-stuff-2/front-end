@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import SignupFormSchema from "../validation/SignupFormSchema";
 import * as yup from "yup";
+import Select from "@material-ui/core/Select";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 
 const SignupForm = (props) => {
 
@@ -91,31 +94,22 @@ const SignupForm = (props) => {
     return (
         <form className="registerForm" onSubmit={onSubmitSignup}>
             <h1>Sign Up</h1>
-            <label>Full Name:
-                <input type="text" value={userValues.fullName} name="fullName" onChange={onSignupInputChange}></input>
-            </label>
-            <div>{signupFormErrors.fullName}</div>
-            <label>Username:
-                <input type="text" value={userValues.username} onChange={onSignupInputChange} name="username"></input>
-            </label>
-            <div>{signupFormErrors.username}</div>
-            <label>Password:
-                <input type="password" value={userValues.password} onChange={onSignupInputChange} name="password"></input>
-            </label>
-            <div>{signupFormErrors.password}</div>
-            <label>Email
-                <input type="text" value={userValues.email} onChange={onSignupInputChange} name="email"></input>
-            </label>
-            <div>{signupFormErrors.email}</div>
-            <label>I am a
-                <select onChange={onSignupInputChange} value={userValues.userType} name="userType">
+                <Select onChange={onSignupInputChange} value={userValues.userType} name="userType" autoWidth={true} label="I am a ">
                     <option value=""></option>
                     <option value="renter">Renter</option>
                     <option value="owner">Owner</option>
-                </select>
-            </label>
+                </Select>
+            <div>{signupFormErrors.userType}</div>
+                <TextField value={userValues.fullName} name="fullName" onChange={onSignupInputChange} label="Full Name"></TextField>
+            <div>{signupFormErrors.fullName}</div>
+                <TextField value={userValues.username} onChange={onSignupInputChange} name="username" label="Username"></TextField>
+            <div>{signupFormErrors.username}</div>
+                <TextField type="password" value={userValues.password} onChange={onSignupInputChange} name="password" label="Password"></TextField>
+            <div>{signupFormErrors.password}</div>
+                <TextField value={userValues.email} onChange={onSignupInputChange} name="email" label="Email"></TextField>
             <div>{signupFormErrors.email}</div>
-            <button disabled={disabled} className="submit">Register</button>
+            <br></br>
+            <Button disabled={disabled} className="submit" variant="contained" color="primary">Register</Button>
         </form>
     );
 }
