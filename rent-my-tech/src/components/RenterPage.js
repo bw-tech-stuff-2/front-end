@@ -10,19 +10,32 @@ import {connect} from 'react-redux'
 // Actions
 import {getRequestItems} from '../store/actions/'
 
-const RenterPage = props => {
+const RenterPage = props =>  {
     useEffect(() => {
         props.getRequestItems()
-        console.log(props.requestList)
     }, [])
 
     return(
         <>
-            REQ ITEMS PAGE!
+            <p>Req Page</p>
+            {props.isFetching && <p>Fetching Items..</p>} {/*Cool spinner here*/}
+            {props.requestList && props.requestList.map(item => {
+                return (
+                    <div>
+                        <p>{item.id}</p>
+                        <p>{item.techItem}</p>
+                        <p>{item.techDescription}</p>
+                        <p>{item.owner}</p>
+                        <p>{item.price}</p>
+                        <p>{item.request}</p>
+                        <p>{item.rentersId}</p>
+                        <p>{item.username}</p>
+                    </div>
+                )
+            })}
         </>
-    )
+    )        
 }
-
 
 // using the token send a get request to api/request
 // set the list of items and their info into state using redux
@@ -34,9 +47,9 @@ const RenterPage = props => {
 
 const mapStateToProps = state => {
     return {
-        isFetching: state.isFetching,
-        error: state.error,
-        requestList: state.requestList
+        isFetching: state.getRequestItems.isFetching,
+        error: state.getRequestItems.error,
+        requestList: state.getRequestItems.requestList
     }
 }
 

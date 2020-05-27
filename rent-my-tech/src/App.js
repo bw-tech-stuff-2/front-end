@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './App.css';
 import SignupForm from "./components/SignupForm";
 import LoginForm from "./components/LoginForm";
@@ -33,7 +33,7 @@ function App() {
         <LoginForm />
       </Route>
       <Route path="/renterPage" component={RenterPage} />
-      <Route path="/techPage" component={TechPage} />
+      {/* <Route path="/techPage" component={TechPage} /> */}
     </div>
   );
 }

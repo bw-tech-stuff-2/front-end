@@ -19,12 +19,14 @@ export const getRequestItems = (state=initalState, action) => {
                 error: action.payload.error
             }
         case GET_REQUEST_ITEMS_SUCCESS:
+            // console.log(action.payload.requestList)
             return {
                 ...state,
                 isFetching: action.payload.isFetching,
                 error: action.payload.error,
                 requestList: action.payload.requestList
             }
+            
         case GET_REQUEST_ITEMS_FAIL:
             return {
                 ...state,
