@@ -22,7 +22,6 @@ const AddTechItem = (props) => {
       ...postPayload,
       [name]: value,
     });
-    console.log(postPayload);
   };
 
   const postNewItem = (e) => {
