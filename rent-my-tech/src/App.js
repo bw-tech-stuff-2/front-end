@@ -10,7 +10,7 @@ import AddTechItem from "./components/AddTechItem";
 import RenterPageInfo from "./components/RenterPageInfo";
 import TechPageInfo from "./components/TechPageInfo";
 import PrivateRoute from "./components/PrivateRoute";
-import { AppBar, Button } from "@material-ui/core";
+import { AppBar, Button, withStyles } from "@material-ui/core";
 import styled from "styled-components";
 
 const StyledFormDiv = styled.div`
@@ -20,12 +20,16 @@ const StyledFormDiv = styled.div`
   text-align: center;
 `;
 
-const StyledAppBar = styled(AppBar)`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-`;
+const StyledAppBar = withStyles({
+  root: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    textAlign: "center",
+    background: "#4392F1",
+  }
+})(AppBar);
 
 const StyledButton = styled(Button)`
   width: 10%;
@@ -37,59 +41,63 @@ function App() {
       <Route exact path="/">
         <StyledAppBar>
           <h2>Use My Tech Stuff</h2>
-          <StyledButton
-            component={NavLink}
-            color="inherit"
-            className="homeLink"
-            to="/"
-          >
-            Home
+          <div>
+            <StyledButton
+              component={NavLink}
+              color="inherit"
+              className="homeLink"
+              to="/"
+            >
+              Home
           </StyledButton>
-          <StyledButton
-            component={NavLink}
-            color="inherit"
-            className="signupLink"
-            to="/register"
-          >
-            Register
+            <StyledButton
+              component={NavLink}
+              color="inherit"
+              className="signupLink"
+              to="/register"
+            >
+              Register
           </StyledButton>
-          <StyledButton
-            component={NavLink}
-            color="inherit"
-            className="loginLink"
-            to="/login"
-          >
-            Login
+            <StyledButton
+              component={NavLink}
+              color="inherit"
+              className="loginLink"
+              to="/login"
+            >
+              Login
           </StyledButton>
+          </div>
         </StyledAppBar>
       </Route>
       <Route path="/register">
         <StyledAppBar>
           <h2>Use My Tech Stuff</h2>
-          <StyledButton
-            component={NavLink}
-            color="inherit"
-            className="homeLink"
-            to="/"
-          >
-            Home
+          <div>
+            <StyledButton
+              component={NavLink}
+              color="inherit"
+              className="homeLink"
+              to="/"
+            >
+              Home
           </StyledButton>
-          <StyledButton
-            component={NavLink}
-            color="inherit"
-            className="signupLink"
-            to="/register"
-          >
-            Register
+            <StyledButton
+              component={NavLink}
+              color="inherit"
+              className="signupLink"
+              to="/register"
+            >
+              Register
           </StyledButton>
-          <StyledButton
-            component={NavLink}
-            color="inherit"
-            className="loginLink"
-            to="/login"
-          >
-            Login
+            <StyledButton
+              component={NavLink}
+              color="inherit"
+              className="loginLink"
+              to="/login"
+            >
+              Login
           </StyledButton>
+          </div>
         </StyledAppBar>
         <StyledFormDiv>
           <SignupForm />
@@ -98,30 +106,32 @@ function App() {
       <Route path="/login">
         <StyledAppBar>
           <h2>Use My Tech Stuff</h2>
-          <StyledButton
-            component={NavLink}
-            color="inherit"
-            className="homeLink"
-            to="/"
-          >
-            Home
+          <div>
+            <StyledButton
+              component={NavLink}
+              color="inherit"
+              className="homeLink"
+              to="/"
+            >
+              Home
           </StyledButton>
-          <StyledButton
-            component={NavLink}
-            color="inherit"
-            className="signupLink"
-            to="/register"
-          >
-            Register
+            <StyledButton
+              component={NavLink}
+              color="inherit"
+              className="signupLink"
+              to="/register"
+            >
+              Register
           </StyledButton>
-          <StyledButton
-            component={NavLink}
-            color="inherit"
-            className="loginLink"
-            to="/login"
-          >
-            Login
+            <StyledButton
+              component={NavLink}
+              color="inherit"
+              className="loginLink"
+              to="/login"
+            >
+              Login
           </StyledButton>
+          </div>
         </StyledAppBar>
         <StyledFormDiv>
           <LoginForm />
