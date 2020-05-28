@@ -18,7 +18,7 @@ const RequestItem = props => {
         // Action call that sends a get request to /api/request/:id
         // then route to /RequestItemInfo page
         props.getRequestCurrentItem(item.id)
-        history.push("/renterPageInfo")
+        setTimeout(() => history.push("/renterPageInfo"), 500)
     }
 
     // Simon can touch up this component
@@ -37,7 +37,7 @@ const RequestItem = props => {
                 </Typography>
                 <br />
                 <Typography variant="body2" component="p">
-                    {item.request}
+                    Request Msg: {item.request}
                 </Typography>
                 <br></br>
                 <Typography variant="caption">
