@@ -8,9 +8,12 @@ import TechItem from "./TechItem";
 import { getTechItems } from "../store/actions/";
 import styled from "styled-components";
 
+import { CircularProgress } from "@material-ui/core";
+
 const StyledDiv = styled.div`
   display: flex;
   justify-content: center;
+  background: dodgerblue;
 `;
 
 const TechPage = (props) => {
@@ -23,19 +26,23 @@ const TechPage = (props) => {
     <>
       <p>Tech Page</p>
 
-      {props.isFetching && <p>Fetching Items...</p>}
+      {props.isFetching && <CircularProgress />}
       <StyledDiv>
         {props.techList.map((item) => {
           return <TechItem key={item.id} item={item} />;
         })}
       </StyledDiv>
-      <button
-        onClick={() => {
-          history.push("/addTechItem");
-        }}
-      >
-        Add Item
-      </button>
+      <div className="tech-page-box">
+        <h3>Want to list something new...</h3>
+        <button
+          className="tech-page-btn"
+          onClick={() => {
+            history.push("/addTechItem");
+          }}
+        >
+          Add Item
+        </button>
+      </div>
     </>
   );
 };
