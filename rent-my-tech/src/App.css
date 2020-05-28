@@ -36,3 +36,53 @@
     transform: rotate(360deg);
   }
 }
+.tech-page-box {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2%;
+  margin: auto;
+  margin-top: 2%;
+  box-shadow: 0px 0px 10px 0px lightgrey;
+  border-radius: 10px;
+  background: white;
+  color: dodgerblue;
+}
+.tech-page-btn {
+  background: dodgerblue;
+  width: 80%;
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+  border-radius: 10px;
+  margin-left: 10%;
+  color: white;
+  font-size: 20px;
+}
+
+.tech-page-btn:hover {
+  background: lightgrey;
+}
+
+.add-item {
+  color: dodgerblue;
+  display: flex;
+  justify-content: center;
+}
+
+.tech-top {
+  display: flex;
+  justify-content: center;
+  width: 10%;
+  margin-top: 5%;
+  margin-left: 5%;
+  font-size: 20px;
+  background: dodgerblue;
+  border-radius: 10px;
+  color: white;
+}
+.tech-top:hover {
+  background: lightgrey;
+}
