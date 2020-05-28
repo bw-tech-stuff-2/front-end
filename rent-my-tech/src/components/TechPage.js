@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useHistory } from "react-router-dom";
 
 import { connect } from "react-redux";
 
@@ -13,6 +14,7 @@ const StyledDiv = styled.div`
 `;
 
 const TechPage = (props) => {
+  const history = useHistory();
   useEffect(() => {
     props.getTechItems();
   }, []);
@@ -27,6 +29,13 @@ const TechPage = (props) => {
           return <TechItem key={item.id} item={item} />;
         })}
       </StyledDiv>
+      <button
+        onClick={() => {
+          history.push("/addTechItem");
+        }}
+      >
+        Add Item
+      </button>
     </>
   );
 };

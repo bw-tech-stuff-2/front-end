@@ -28,6 +28,10 @@ export const PUT_TECH_CURRENT_ITEM_START = "PUT_TECH_CURRENT_ITEM_START";
 export const PUT_TECH_CURRENT_ITEM_SUCCESS = "PUT_TECH_CURRENT_ITEM_SUCCESS";
 export const PUT_TECH_CURRENT_ITEM_FAIL = "PUT_TECH_CURRENT_ITEM_FAIL";
 
+export const POST_TECH_ITEM_START = "POST_TECH_ITEM_START";
+export const POST_TECH_ITEM_SUCCESS = "POST_TECH_ITEM_SUCCESS";
+export const POST_TECH_ITEM_FAIL = "POST_TECH_ITEM_FAIL";
+
 //Calebs Functions
 
 export const getRequestItems = () => {
@@ -171,7 +175,7 @@ export const putTechCurrentItem = (id, putPayload) => {
       payload: { error: "", isFetching: true },
     });
     axiosWithAuth()
-      .put(`/api/request/${id}`, putPayload)
+      .put(`/api/tech/${id}`, putPayload)
       .then(() => {
         dispatch({
           type: PUT_TECH_CURRENT_ITEM_SUCCESS,
@@ -183,6 +187,32 @@ export const putTechCurrentItem = (id, putPayload) => {
           type: PUT_TECH_CURRENT_ITEM_FAIL,
           payload: {
             error: "TRY COMING FROM /techPage instead",
+            isFetching: false,
+          },
+        });
+      });
+  };
+};
+
+export const postTechItem = (postPayload) => {
+  return (dispatch) => {
+    dispatch({
+      type: POST_TECH_ITEM_START,
+      payload: { error: "", isFetching: true },
+    });
+    axiosWithAuth()
+      .post("api/tech", postPayload)
+      .then(() => {
+        dispatch({
+          type: POST_TECH_ITEM_SUCCESS,
+          payload: { error: "", isFetching: false },
+        });
+      })
+      .catch(() => {
+        dispatch({
+          type: POST_TECH_ITEM_FAIL,
+          payload: {
+            error: "GET OUTTA HERE",
             isFetching: false,
           },
         });

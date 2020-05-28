@@ -6,9 +6,10 @@ import { Route, NavLink } from "react-router-dom";
 
 import RenterPage from "./components/RenterPage";
 import TechPage from "./components/TechPage";
-import RenterPageInfo from './components/RenterPageInfo'
-import TechPageInfo from './components/TechPageInfo'
-import PrivateRoute from './components/PrivateRoute'
+import AddTechItem from "./components/AddTechItem";
+import RenterPageInfo from "./components/RenterPageInfo";
+import TechPageInfo from "./components/TechPageInfo";
+import PrivateRoute from "./components/PrivateRoute";
 import { AppBar, Button } from "@material-ui/core";
 import styled from "styled-components";
 
@@ -36,13 +37,28 @@ function App() {
       <Route exact path="/">
         <StyledAppBar>
           <h2>Use My Tech Stuff</h2>
-          <StyledButton component={NavLink} color="inherit" className="homeLink" to="/">
+          <StyledButton
+            component={NavLink}
+            color="inherit"
+            className="homeLink"
+            to="/"
+          >
             Home
           </StyledButton>
-          <StyledButton component={NavLink} color="inherit" className="signupLink" to="/register">
+          <StyledButton
+            component={NavLink}
+            color="inherit"
+            className="signupLink"
+            to="/register"
+          >
             Register
           </StyledButton>
-          <StyledButton component={NavLink} color="inherit" className="loginLink" to="/login">
+          <StyledButton
+            component={NavLink}
+            color="inherit"
+            className="loginLink"
+            to="/login"
+          >
             Login
           </StyledButton>
         </StyledAppBar>
@@ -50,13 +66,28 @@ function App() {
       <Route path="/register">
         <StyledAppBar>
           <h2>Use My Tech Stuff</h2>
-          <StyledButton component={NavLink} color="inherit" className="homeLink" to="/">
+          <StyledButton
+            component={NavLink}
+            color="inherit"
+            className="homeLink"
+            to="/"
+          >
             Home
           </StyledButton>
-          <StyledButton component={NavLink} color="inherit" className="signupLink" to="/register">
+          <StyledButton
+            component={NavLink}
+            color="inherit"
+            className="signupLink"
+            to="/register"
+          >
             Register
           </StyledButton>
-          <StyledButton component={NavLink} color="inherit" className="loginLink" to="/login">
+          <StyledButton
+            component={NavLink}
+            color="inherit"
+            className="loginLink"
+            to="/login"
+          >
             Login
           </StyledButton>
         </StyledAppBar>
@@ -67,13 +98,28 @@ function App() {
       <Route path="/login">
         <StyledAppBar>
           <h2>Use My Tech Stuff</h2>
-          <StyledButton component={NavLink} color="inherit" className="homeLink" to="/">
+          <StyledButton
+            component={NavLink}
+            color="inherit"
+            className="homeLink"
+            to="/"
+          >
             Home
           </StyledButton>
-          <StyledButton component={NavLink} color="inherit" className="signupLink" to="/register">
+          <StyledButton
+            component={NavLink}
+            color="inherit"
+            className="signupLink"
+            to="/register"
+          >
             Register
           </StyledButton>
-          <StyledButton component={NavLink} color="inherit" className="loginLink" to="/login">
+          <StyledButton
+            component={NavLink}
+            color="inherit"
+            className="loginLink"
+            to="/login"
+          >
             Login
           </StyledButton>
         </StyledAppBar>
@@ -84,7 +130,8 @@ function App() {
       <PrivateRoute path="/renterPage" component={RenterPage} />
       <PrivateRoute path="/techPage" component={TechPage} />
       <PrivateRoute path="/renterPageInfo" component={RenterPageInfo} />
-      {/* <Route path="/techPageInfo" component={TechPageInfo} /> */}
+      <PrivateRoute path="/techPageInfo" component={TechPageInfo} />
+      <PrivateRoute path="/addTechItem" component={AddTechItem} />
     </div>
   );
 }
