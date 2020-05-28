@@ -32,6 +32,10 @@ export const POST_TECH_ITEM_START = "POST_TECH_ITEM_START";
 export const POST_TECH_ITEM_SUCCESS = "POST_TECH_ITEM_SUCCESS";
 export const POST_TECH_ITEM_FAIL = "POST_TECH_ITEM_FAIL";
 
+export const DELETE_TECH_ITEM_START = "DELETE_TECH_ITEM_START";
+export const DELETE_TECH_ITEM_SUCCESS = "DELETE_TECH_ITEM_SUCCESS";
+export const DELETE_TECH_ITEM_FAIL = "DELETE_TECH_ITEM_FAIL";
+
 //Calebs Functions
 
 export const getRequestItems = () => {
@@ -215,6 +219,30 @@ export const postTechItem = (postPayload) => {
             error: "GET OUTTA HERE",
             isFetching: false,
           },
+        });
+      });
+  };
+};
+
+export const deleteTechItem = (id) => {
+  return (dispatch) => {
+    dispatch({
+      type: DELETE_TECH_ITEM_START,
+      payload: { error: "", isFetching: true },
+    });
+
+    axiosWithAuth()
+      .delete(`/api/tech/${id}`)
+      .then(() => {
+        dispatch({
+          type: DELETE_TECH_ITEM_SUCCESS,
+          payload: { error: "", isFetching: false },
+        });
+      })
+      .catch(() => {
+        dispatch({
+          type: DELETE_TECH_ITEM_FAIL,
+          payload: { error: "GET OUTTA HERE", isFetching: false },
         });
       });
   };

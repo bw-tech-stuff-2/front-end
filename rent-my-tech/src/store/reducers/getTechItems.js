@@ -8,6 +8,9 @@ import {
   POST_TECH_ITEM_START,
   POST_TECH_ITEM_SUCCESS,
   POST_TECH_ITEM_FAIL,
+  DELETE_TECH_ITEM_START,
+  DELETE_TECH_ITEM_SUCCESS,
+  DELETE_TECH_ITEM_FAIL,
 } from "../actions";
 
 const initialState = {
@@ -75,6 +78,25 @@ export const getTechItems = (state = initialState, action) => {
         error: action.payload.error,
       };
     case POST_TECH_ITEM_FAIL:
+      return {
+        ...state,
+        isFetching: action.payload.isFetching,
+        error: action.payload.error,
+      };
+    case DELETE_TECH_ITEM_START:
+      return {
+        ...state,
+        isFetching: action.payload.isFetching,
+        error: action.payload.error,
+      };
+    case DELETE_TECH_ITEM_SUCCESS:
+      return {
+        ...state,
+        isFetching: action.payload.isFetching,
+        error: action.payload.error,
+      };
+
+    case DELETE_TECH_ITEM_FAIL:
       return {
         ...state,
         isFetching: action.payload.isFetching,
