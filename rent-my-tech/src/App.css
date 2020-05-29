@@ -43,7 +43,7 @@
   justify-content: center;
   padding: 2%;
   margin: auto;
-  margin-top: 2%;
+  margin-top: 1%;
   box-shadow: 0px 0px 10px 0px lightgrey;
   border-radius: 10px;
   background: white;
@@ -66,6 +66,29 @@
   background: lightgrey;
 }
 
+.tech-page-info {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  margin: auto;
+}
+.tech-page-btn-1 {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin: auto;
+
+  background: dodgerblue;
+  width: 15%;
+  height: 5vh;
+
+  margin-top: 1%;
+  border-radius: 10px;
+
+  color: white;
+  font-size: 20px;
+}
+
 .add-item {
   color: dodgerblue;
   display: flex;
@@ -85,4 +108,19 @@
 }
 .tech-top:hover {
   background: lightgrey;
+}
+.page-heading {
+  margin: 3%;
+  width: 20%;
+  border: 1px solid lightgrey;
+  text-align: center;
+  border-radius: 20px;
+  color: dodgerblue;
+  box-shadow: 0px 0px 20px 0px lightgrey;
+  font-size: 25px;
+}
+
+.header {
+  text-align: center;
+  color: dodgerblue;
 }

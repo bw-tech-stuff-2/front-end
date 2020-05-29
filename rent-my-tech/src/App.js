@@ -4,6 +4,7 @@ import SignupForm from "./components/SignupForm";
 import LoginForm from "./components/LoginForm";
 import { Route, NavLink } from "react-router-dom";
 
+import Header from "./components/Header";
 import RenterPage from "./components/RenterPage";
 import TechPage from "./components/TechPage";
 import AddTechItem from "./components/AddTechItem";
@@ -28,7 +29,7 @@ const StyledAppBar = withStyles({
     alignItems: "center",
     textAlign: "center",
     background: "#4392F1",
-  }
+  },
 })(AppBar);
 
 const StyledButton = styled(Button)`
@@ -38,6 +39,7 @@ const StyledButton = styled(Button)`
 function App() {
   return (
     <div>
+      <Header />
       <Route exact path="/">
         <StyledAppBar>
           <h2>Use My Tech Stuff</h2>
@@ -49,7 +51,7 @@ function App() {
               to="/"
             >
               Home
-          </StyledButton>
+            </StyledButton>
             <StyledButton
               component={NavLink}
               color="inherit"
@@ -57,7 +59,7 @@ function App() {
               to="/register"
             >
               Register
-          </StyledButton>
+            </StyledButton>
             <StyledButton
               component={NavLink}
               color="inherit"
@@ -65,7 +67,7 @@ function App() {
               to="/login"
             >
               Login
-          </StyledButton>
+            </StyledButton>
           </div>
         </StyledAppBar>
       </Route>
@@ -80,7 +82,7 @@ function App() {
               to="/"
             >
               Home
-          </StyledButton>
+            </StyledButton>
             <StyledButton
               component={NavLink}
               color="inherit"
@@ -88,7 +90,7 @@ function App() {
               to="/register"
             >
               Register
-          </StyledButton>
+            </StyledButton>
             <StyledButton
               component={NavLink}
               color="inherit"
@@ -96,7 +98,7 @@ function App() {
               to="/login"
             >
               Login
-          </StyledButton>
+            </StyledButton>
           </div>
         </StyledAppBar>
         <StyledFormDiv>
@@ -114,7 +116,7 @@ function App() {
               to="/"
             >
               Home
-          </StyledButton>
+            </StyledButton>
             <StyledButton
               component={NavLink}
               color="inherit"
@@ -122,7 +124,7 @@ function App() {
               to="/register"
             >
               Register
-          </StyledButton>
+            </StyledButton>
             <StyledButton
               component={NavLink}
               color="inherit"
@@ -130,7 +132,7 @@ function App() {
               to="/login"
             >
               Login
-          </StyledButton>
+            </StyledButton>
           </div>
         </StyledAppBar>
         <StyledFormDiv>

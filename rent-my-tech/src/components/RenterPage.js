@@ -12,11 +12,12 @@ import { getRequestItems } from "../store/actions/";
 import styled from "styled-components";
 
 // Spinner
-import {CircularProgress} from '@material-ui/core'
+import { CircularProgress } from "@material-ui/core";
 
 const StyledDiv = styled.div`
   display: flex;
   justify-content: center;
+  background: dodgerblue;
 `;
 
 const RenterPage = (props) => {
@@ -26,6 +27,7 @@ const RenterPage = (props) => {
 
   return (
     <>
+      <h1 className="page-heading">Items Available</h1>
       <StyledDiv>
         {props.isFetching && <CircularProgress />} {/*Cool spinner here*/}
         {props.requestList &&
