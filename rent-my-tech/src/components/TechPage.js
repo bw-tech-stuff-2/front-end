@@ -24,7 +24,7 @@ const TechPage = (props) => {
 
   return (
     <>
-      <p>Tech Page</p>
+      <h1 className="page-heading">Items</h1>
 
       {props.isFetching && <CircularProgress />}
       <StyledDiv>
