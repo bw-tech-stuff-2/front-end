@@ -3,7 +3,14 @@ import axios from "axios";
 import SignupFormSchema from "../validation/SignupFormSchema";
 import * as yup from "yup";
 import { Select, TextField } from "@material-ui/core";
+import { useHistory } from "react-router-dom"
 // import Button from "@material-ui/core/Button";
+import styled from "styled-components"
+
+const StyledTextField = styled(TextField)`
+    width: 30%;
+    margin: 10px 0;
+`;
 
 const SignupForm = (props) => {
 
@@ -26,6 +33,8 @@ const SignupForm = (props) => {
     const [userValues, setUserValues] = useState(initialUserValues);
     const [disabled, setDisabled] = useState(initialDisabled);
     const [token, setToken] = useState("");
+    const history = useHistory();
+    const { push } = history;
 
     const postNewUser = newUser => {
         let postUser = {
@@ -81,6 +90,7 @@ const SignupForm = (props) => {
             userType: userValues.userType.trim(),
         }
         postNewUser(newUser);
+        push("/login");
     }
 
     useEffect(() => {
@@ -101,13 +111,13 @@ const SignupForm = (props) => {
                 </Select>
             </label>
             <div>{signupFormErrors.userType}</div>
-            <TextField value={userValues.fullName} name="fullName" onChange={onSignupInputChange} label="Full Name"></TextField>
+            <StyledTextField value={userValues.fullName} name="fullName" onChange={onSignupInputChange} label="Full Name" variant="outlined"></StyledTextField>
             <div>{signupFormErrors.fullName}</div>
-            <TextField value={userValues.username} onChange={onSignupInputChange} name="username" label="Username"></TextField>
+            <StyledTextField value={userValues.username} onChange={onSignupInputChange} name="username" label="Username" variant="outlined"></StyledTextField>
             <div>{signupFormErrors.username}</div>
-            <TextField type="password" value={userValues.password} onChange={onSignupInputChange} name="password" label="Password"></TextField>
+            <StyledTextField type="password" value={userValues.password} onChange={onSignupInputChange} name="password" label="Password" variant="outlined"></StyledTextField>
             <div>{signupFormErrors.password}</div>
-            <TextField value={userValues.email} onChange={onSignupInputChange} name="email" label="Email"></TextField>
+            <StyledTextField value={userValues.email} onChange={onSignupInputChange} name="email" label="Email" variant="outlined"></StyledTextField>
             <div>{signupFormErrors.email}</div>
             <br></br>
             <button disabled={disabled} className="submit" variant="contained" color="primary">Register</button>
