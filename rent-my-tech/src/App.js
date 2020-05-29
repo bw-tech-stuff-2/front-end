@@ -35,18 +35,22 @@ const StyledButton = styled(Button)`
   width: 10%;
 `;
 
+const StyledH2 = styled.h2`
+  margin-left: 10px;
+`;
+
 function App() {
   return (
     <div>
       <Route exact path="/">
         <StyledAppBar>
-          <h2>Use My Tech Stuff</h2>
+          <StyledH2>Use My Tech Stuff</StyledH2>
           <div>
             <StyledButton
-              component={NavLink}
+              target="_blank"
               color="inherit"
               className="homeLink"
-              to="/"
+              href="https://practical-visvesvaraya-6e178e.netlify.app/"
             >
               Home
           </StyledButton>
@@ -71,7 +75,7 @@ function App() {
       </Route>
       <Route path="/register">
         <StyledAppBar>
-          <h2>Use My Tech Stuff</h2>
+          <StyledH2>Use My Tech Stuff</StyledH2>
           <div>
             <StyledButton
               component={NavLink}
@@ -105,7 +109,7 @@ function App() {
       </Route>
       <Route path="/login">
         <StyledAppBar>
-          <h2>Use My Tech Stuff</h2>
+          <StyledH2>Use My Tech Stuff</StyledH2>
           <div>
             <StyledButton
               component={NavLink}

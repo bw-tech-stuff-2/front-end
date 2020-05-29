@@ -4,7 +4,13 @@ import * as yup from "yup";
 import LoginFormSchema from "../validation/LoginFormSchema";
 import axios from "axios";
 import { Select, TextField } from "@material-ui/core";
+import styled from "styled-components";
 // import Button from "@material-ui/core/Button";
+
+const StyledTextField = styled(TextField)`
+    width: 30%;
+    margin: 10px 0;
+`;
 
 const LoginForm = (props) => {
 
@@ -86,11 +92,11 @@ const LoginForm = (props) => {
                 </Select>
             </label>
             <div>{loginFormErrors.userType}</div>
-            <TextField type="text" value={userValues.fullName} onChange={onLoginInputChange} name="fullName" label="Full Name"></TextField>
+            <StyledTextField type="text" value={userValues.fullName} onChange={onLoginInputChange} name="fullName" label="Full Name" variant="outlined"></StyledTextField>
             <div>{loginFormErrors.fullName}</div>
-            <TextField type="text" value={userValues.username} onChange={onLoginInputChange} name="username" label="Username"></TextField>
+            <StyledTextField type="text" value={userValues.username} onChange={onLoginInputChange} name="username" label="Username" variant="outlined"></StyledTextField>
             <div>{loginFormErrors.username}</div>
-            <TextField type="password" value={userValues.password} onChange={onLoginInputChange} name="password" label="Password"></TextField>
+            <StyledTextField type="password" value={userValues.password} onChange={onLoginInputChange} name="password" label="Password" variant="outlined"></StyledTextField>
             <div>{loginFormErrors.password}</div>
             <br></br>
             <button disabled={disabled} className="submit" variant="contained" color="primary">Sign In</button>
