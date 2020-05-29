@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import SignupForm from "./components/SignupForm";
 import LoginForm from "./components/LoginForm";
-import { Route, NavLink } from "react-router-dom";
+import { Route } from "react-router-dom";
 
 import Header from "./components/Header";
 import RenterPage from "./components/RenterPage";
@@ -12,7 +12,6 @@ import RenterPageInfo from "./components/RenterPageInfo";
 import TechPageInfo from "./components/TechPageInfo";
 import PrivateRoute from "./components/PrivateRoute";
 import NavigationBar from "./components/NavigationBar"
-import { AppBar, Button, withStyles } from "@material-ui/core";
 import styled from "styled-components";
 
 const StyledFormDiv = styled.div`
@@ -22,24 +21,6 @@ const StyledFormDiv = styled.div`
   text-align: center;
 `;
 
-const StyledAppBar = withStyles({
-  root: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    textAlign: "center",
-    background: "#4392F1",
-  },
-})(AppBar);
-
-const StyledButton = styled(Button)`
-  width: 10%;
-`;
-
-const StyledH2 = styled.h2`
-  margin-left: 10px;
-`;
 
 function App() {
   return (

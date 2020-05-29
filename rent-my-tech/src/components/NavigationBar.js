@@ -30,7 +30,6 @@ export default function NavigationBar() {
             <StyledH2>Use My Tech Stuff</StyledH2>
             <div>
                 <StyledButton
-                    target="_blank"
                     color="inherit"
                     className="homeLink"
                     href="https://practical-visvesvaraya-6e178e.netlify.app/"
