@@ -71,7 +71,10 @@ const TechPageInfo = (props) => {
         </CardContent>
       </StyledCard>
 
-      <form>
+      <button className="tech-page-btn-1" onClick={deleteTechItemHandler}>
+        Delete
+      </button>
+      <form className="tech-page-box">
         <p>Tech Item</p>
         <input
           type="text"
@@ -100,9 +103,10 @@ const TechPageInfo = (props) => {
           value={putPayload.price}
           onChange={handleTechChanges}
         />
-        <button onClick={postTechChanges}>Submit</button>
+        <button className="tech-page-btn" onClick={postTechChanges}>
+          Submit
+        </button>
       </form>
-      <button onClick={deleteTechItemHandler}>Delete</button>
     </>
   );
 };
