@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 
 // Reducer
-import reducer from './store/reducers' // combines reducers <---
+import reducer from './store/reducers'
 
 // React Router
 import {BrowserRouter as Router} from 'react-router-dom'
